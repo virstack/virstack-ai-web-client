@@ -8,7 +8,7 @@
   "types": "dist/index.d.ts",
   "amdName": "VirstackAIWebClient",
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --outfile=dist/index.umd.js --format=iife --global-name=VirstackAIWebClient --platform=browser && cp virstack_ai_web_ui.js dist/virstack_ai_web_ui.js"
+    "build": "esbuild src/index.ts --bundle --outfile=dist/index.umd.js --format=iife --global-name=VirstackAIWebClient --platform=browser && esbuild virstack_ai_web_ui.js --bundle --outfile=dist/virstack_ai_web_ui.umd.js --format=iife --global-name=VirstackAIWebUIWidget --platform=browser"
   },
   "keywords": [],
   "author": "",

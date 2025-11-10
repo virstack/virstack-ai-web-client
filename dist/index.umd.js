@@ -195,7 +195,8 @@ var VirstackAIWebClient = (() => {
   // src/index.ts
   var index_exports = {};
   __export(index_exports, {
-    VirstackAIWebClient: () => VirstackAIWebClient
+    VirstackAIWebClient: () => VirstackAIWebClient,
+    default: () => index_default
   });
 
   // node_modules/eventemitter3/index.mjs
@@ -19666,5 +19667,6 @@ var VirstackAIWebClient = (() => {
       );
     }
   };
+  var index_default = VirstackAIWebClient;
   return __toCommonJS(index_exports);
 })();
