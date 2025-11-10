@@ -1,22 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Virstack AI Web Client Test</title>
+    <title>Virstack AI Widget</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Demo content to show widget overlay */
+        .demo-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .demo-content h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .demo-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
-<h1>Virstack AI Client</h1>
-<button id="startCall">Start Call</button>
-
-<script src="https://cdn.jsdelivr.net/gh/virstack/virstack-ai-web-client@v1.0.1/dist/index.umd.js"></script>
-
-<script>
-    // Debug: See what's actually exported
-    console.log('window.VirstackAIWebClient:', window.VirstackAIWebClient);
-    console.log('window:', window);
-
-    // Check all possible names
-    console.log('RetellWebClient?:', window.RetellWebClient);
-    console.log('VirstackWebClient?:', window.VirstackWebClient);
-</script>
+<!-- Demo page content -->
+<div class="demo-content">
+    <h1>Welcome to Your Website</h1>
+    <p>This is a demo page showing how the Virstack AI widget integrates into your website. The AI assistant widget appears in the bottom right corner and can be used on any page.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+    <p>Click the AI assistant button in the bottom right corner to start a conversation with our AI.</p>
+    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+<script src="https://cdn.jsdelivr.net/gh/virstack/virstack-ai-web-client@v1.0.2/dist/index.umd.js"></script>
+<script
+        src="virstack_ai_web_ui.js"
+        data-virstack-widget
+        data-primary-color="green"
+        data-secondary-color="orange"
+        data-token-url="example.com"
+        data-icon-url="https://cdn.prod.website-files.com/6001006c3eaf1e3c0454afe1/6001006c3eaf1eaefe54b012_Citrus%20Icon-01.svg"
+></script>
 </body>
 </html>
