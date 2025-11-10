@@ -1,0 +1,15 @@
+<html>
+<head>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/virstack/virstack-ai-web-client/dist/index.umd.js"></script>
+<script>
+    // Use it (check what global name was exported)
+    const virstackWebClient = new VirstackAIWebClient();
+    // or possibly: new window.VirstackWebClient();
+   virstackWebClient.startCall({
+        accessToken: ""
+    });
+</script>
+</body>
+</html>
