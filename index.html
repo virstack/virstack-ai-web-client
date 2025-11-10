@@ -1,15 +1,34 @@
+<!DOCTYPE html>
 <html>
 <head>
+    <title>Virstack AI Web Client Test</title>
 </head>
 <body>
+<h1>Virstack AI Client</h1>
+<button id="startCall">Start Call</button>
+
 <script src="https://cdn.jsdelivr.net/gh/virstack/virstack-ai-web-client/dist/index.umd.js"></script>
+
 <script>
-    // Use it (check what global name was exported)
-    const virstackWebClient = new VirstackAIWebClient();
-    // or possibly: new window.VirstackWebClient();
-   virstackWebClient.startCall({
-        accessToken: ""
-    });
+    // Option 1: Use async function
+    async function initCall() {
+        const virstackWebClient = new VirstackAIWebClient();
+
+        try {
+            await virstackWebClient.startCall({
+                accessToken: "your-actual-access-token-here"
+            });
+            console.log('Call started successfully');
+        } catch (error) {
+            console.error('Error starting call:', error);
+        }
+    }
+
+    // Call it when button is clicked (or immediately)
+    document.getElementById('startCall').addEventListener('click', initCall);
+
+    // Or call immediately:
+    // initCall();
 </script>
 </body>
 </html>

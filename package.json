@@ -7,12 +7,13 @@
   "unpkg": "dist/index.umd.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rm -rf dist && microbundle --tsconfig tsconfig.json --no-sourcemap --external none"
+    "build": "esbuild src/index.ts --bundle --outfile=dist/index.umd.js --format=iife --global-name=VirstackAIWebClient --platform=browser"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "esbuild": "^0.27.0",
     "microbundle": "^0.15.1"
   },
   "dependencies": {
