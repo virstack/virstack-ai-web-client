@@ -215,3 +215,5 @@ export class VirstackAIWebClient extends EventEmitter {
     );
   }
 }
+
+export default VirstackAIWebClient;

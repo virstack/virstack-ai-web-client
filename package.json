@@ -6,6 +6,7 @@
   "module": "dist/index.m.js",
   "unpkg": "dist/index.umd.js",
   "types": "dist/index.d.ts",
+  "amdName": "VirstackAIWebClient",
   "scripts": {
     "build": "esbuild src/index.ts --bundle --outfile=dist/index.umd.js --format=iife --global-name=VirstackAIWebClient --platform=browser"
   },
