@@ -1,3 +1,5 @@
-Check out
-[Retell AI Web Call Guide](https://docs.retellai.com/make-calls/web-call) for
-how to use this SDK.
+## Contact
+
+For support, questions, or collaboration opportunities, contact the **virstack.ai team**:
+- Website: [virstack.ai](https://virstack.ai)
+- Email: contact@virstack.ai
