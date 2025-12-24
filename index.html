@@ -37,21 +37,28 @@
 </head>
 <body>
 <!-- Demo page content -->
+<section id="ai-agent-section"></section>
 <div class="demo-content">
     <h1>Welcome to Your Website</h1>
-    <p>This is a demo page showing how the Virstack AI widget integrates into your website. The AI assistant widget appears in the bottom right corner and can be used on any page.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+    <p>This is a demo page showing how the Virstack AI widget integrates into your website. The AI assistant widget
+        appears in the bottom right corner and can be used on any page.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
     <p>Click the AI assistant button in the bottom right corner to start a conversation with our AI.</p>
-    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 <script src="https://cdn.jsdelivr.net/gh/virstack/virstack-ai-web-client@v1.0.7/dist/index.umd.js"></script>
 <script
         src="https://cdn.jsdelivr.net/gh/virstack/virstack-ai-web-client@v1.0.7/dist/virstack_ai_web_ui.umd.js"
+        data-container-id="ai-agent-section"
         data-virstack-widget
         data-primary-color="green"
         data-secondary-color="orange"
-        data-token-url="example.com"
-        data-icon-url="https://cdn.prod.website-files.com/6001006c3eaf1e3c0454afe1/6001006c3eaf1eaefe54b012_Citrus%20Icon-01.svg"
+        data-token-url="https://citrusapi.virstack.ai/call/init-web-call"
+        data-agent-image-url="https://static2.typecast.ai/ta_preset/images/female_training.jpg"
+        data-title="Talk to Our AI Agent."
+        data-description="Need help? Our AI assistant is here to provide fast and accurate support."
 ></script>
 </body>
 </html>
