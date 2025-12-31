@@ -6,10 +6,13 @@ var VirstackAIWebUIWidget = (() => {
       constructor(config = {}) {
         this.config = {
           tokenUrl: config.tokenUrl || "",
-          iconUrl: config.iconUrl || "\u{1F916}",
+          iconUrl: config.iconUrl || "",
+          iconEmoji: config.iconEmoji || "\u{1F916}",
           position: config.position || "bottom-right",
           primaryColor: config.primaryColor || "#667eea",
           secondaryColor: config.secondaryColor || "#764ba2",
+          buttonSize: config.buttonSize || 70,
+          activeButtonSize: config.activeButtonSize || config.buttonSize * 1.2 || 84,
           ...config
         };
         this.virstackWebClient = null;
@@ -56,8 +59,8 @@ var VirstackAIWebUIWidget = (() => {
                 }
 
                 .virstack-widget-button {
-                    width: 60px;
-                    height: 60px;
+                    width: var(--virstack-button-size, 70px);
+                    height: var(--virstack-button-size, 70px);
                     border-radius: 50%;
                     background: linear-gradient(135deg, var(--virstack-primary, #667eea) 0%, var(--virstack-secondary, #764ba2) 100%);
                     border: none;
@@ -68,6 +71,17 @@ var VirstackAIWebUIWidget = (() => {
                     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
                     transition: all 0.3s ease;
                     position: relative;
+                    overflow: visible;
+                }
+
+                /* When using image icon, hide the gradient background */
+                .virstack-widget-button.has-image-icon {
+                    background: transparent;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                }
+
+                .virstack-widget-button.has-image-icon:hover {
+                    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
                 }
 
                 .virstack-widget-button:hover {
@@ -76,24 +90,46 @@ var VirstackAIWebUIWidget = (() => {
                 }
 
                 .virstack-widget-button.active {
-                    width: 80px;
-                    height: 80px;
+                    width: var(--virstack-active-button-size, 84px);
+                    height: var(--virstack-active-button-size, 84px);
                 }
 
-                .virstack-widget-icon {
-                    font-size: 28px;
-                    transition: opacity 0.3s ease;
+                /* Emoji icon styles */
+                .virstack-widget-icon-emoji {
+                    font-size: calc(var(--virstack-button-size, 70px) * 0.45);
+                    transition: all 0.3s ease;
                     position: relative;
                     z-index: 2;
-                    // max-width: 40px;
-                    // max-height: 40px;
-                    object-fit: contain;
+                    line-height: 1;
                 }
 
-                .virstack-widget-button.active .virstack-widget-icon {
-                    font-size: 36px;
-                    // max-width: 50px;
-                    // max-height: 50px;
+                .virstack-widget-button.active .virstack-widget-icon-emoji {
+                    font-size: calc(var(--virstack-active-button-size, 84px) * 0.45);
+                }
+
+                /* Image icon styles - fills the button as a circle */
+                .virstack-widget-icon-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: all 0.3s ease;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 2;
+                    border-radius: 50%;
+                    pointer-events: none;
+                }
+
+                .virstack-widget-button.active .virstack-widget-icon-image {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                /* Hide icon when voice bars are active */
+                .virstack-widget-button .virstack-voice-bars.active ~ .virstack-widget-icon-emoji,
+                .virstack-widget-button .virstack-voice-bars.active ~ .virstack-widget-icon-image {
+                    opacity: 0;
                 }
 
                 .virstack-widget-button::before {
@@ -111,7 +147,8 @@ var VirstackAIWebUIWidget = (() => {
                 }
 
                 .virstack-widget-button.active::before,
-                .virstack-widget-button.connecting::before {
+                .virstack-widget-button.connecting::before,
+                .virstack-widget-button.has-image-icon::before {
                     display: none;
                 }
 
@@ -158,13 +195,13 @@ var VirstackAIWebUIWidget = (() => {
 
                 @keyframes virstack-wave-expand {
                     0% {
-                        width: 80px;
-                        height: 80px;
+                        width: var(--virstack-active-button-size, 84px);
+                        height: var(--virstack-active-button-size, 84px);
                         opacity: 0.8;
                     }
                     100% {
-                        width: 160px;
-                        height: 160px;
+                        width: calc(var(--virstack-active-button-size, 84px) * 2);
+                        height: calc(var(--virstack-active-button-size, 84px) * 2);
                         opacity: 0;
                     }
                 }
@@ -179,7 +216,7 @@ var VirstackAIWebUIWidget = (() => {
                     align-items: center;
                     opacity: 0;
                     transition: opacity 0.3s ease;
-                    z-index: 1;
+                    z-index: 3;
                 }
 
                 .virstack-voice-bars.active {
@@ -187,17 +224,17 @@ var VirstackAIWebUIWidget = (() => {
                 }
 
                 .virstack-voice-bar {
-                    width: 3px;
+                    width: calc(var(--virstack-button-size, 70px) * 0.045);
                     background: white;
                     border-radius: 2px;
                     animation: virstack-voice-activity 0.6s ease-in-out infinite alternate;
                 }
 
-                .virstack-voice-bar:nth-child(1) { height: 12px; animation-delay: 0s; }
-                .virstack-voice-bar:nth-child(2) { height: 20px; animation-delay: 0.1s; }
-                .virstack-voice-bar:nth-child(3) { height: 28px; animation-delay: 0.2s; }
-                .virstack-voice-bar:nth-child(4) { height: 20px; animation-delay: 0.3s; }
-                .virstack-voice-bar:nth-child(5) { height: 12px; animation-delay: 0.4s; }
+                .virstack-voice-bar:nth-child(1) { height: calc(var(--virstack-button-size, 70px) * 0.18); animation-delay: 0s; }
+                .virstack-voice-bar:nth-child(2) { height: calc(var(--virstack-button-size, 70px) * 0.30); animation-delay: 0.1s; }
+                .virstack-voice-bar:nth-child(3) { height: calc(var(--virstack-button-size, 70px) * 0.42); animation-delay: 0.2s; }
+                .virstack-voice-bar:nth-child(4) { height: calc(var(--virstack-button-size, 70px) * 0.30); animation-delay: 0.3s; }
+                .virstack-voice-bar:nth-child(5) { height: calc(var(--virstack-button-size, 70px) * 0.18); animation-delay: 0.4s; }
 
                 @keyframes virstack-voice-activity {
                     0% {
@@ -289,12 +326,54 @@ var VirstackAIWebUIWidget = (() => {
             `;
         document.head.appendChild(style);
       }
+      isImageUrl(url) {
+        if (!url) return false;
+        if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("//")) {
+          return true;
+        }
+        const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".bmp"];
+        const lowerUrl = url.toLowerCase();
+        return imageExtensions.some((ext) => lowerUrl.endsWith(ext));
+      }
+      createIconElement() {
+        const iconUrl = this.config.iconUrl;
+        if (this.isImageUrl(iconUrl)) {
+          const img = document.createElement("img");
+          img.src = iconUrl;
+          img.alt = "AI Assistant";
+          img.className = "virstack-widget-icon-image";
+          img.id = "virstackWidgetIcon";
+          img.draggable = false;
+          img.onerror = () => {
+            console.warn("Virstack Widget: Failed to load icon image, falling back to emoji");
+            const parent = img.parentElement;
+            if (parent) {
+              const emoji = document.createElement("span");
+              emoji.className = "virstack-widget-icon-emoji";
+              emoji.id = "virstackWidgetIcon";
+              emoji.textContent = this.config.iconEmoji;
+              parent.replaceChild(emoji, img);
+              this.elements.icon = emoji;
+              if (this.elements.button) {
+                this.elements.button.classList.remove("has-image-icon");
+              }
+            }
+          };
+          return img.outerHTML;
+        } else if (iconUrl) {
+          return `<span class="virstack-widget-icon-emoji" id="virstackWidgetIcon">${iconUrl}</span>`;
+        } else {
+          return `<span class="virstack-widget-icon-emoji" id="virstackWidgetIcon">${this.config.iconEmoji}</span>`;
+        }
+      }
       createWidget() {
         const container = document.createElement("div");
         container.className = `virstack-widget position-${this.config.position}`;
         container.style.setProperty("--virstack-primary", this.config.primaryColor);
         container.style.setProperty("--virstack-secondary", this.config.secondaryColor);
-        const iconElement = this.config.iconUrl.startsWith("http") ? `<img src="${this.config.iconUrl}" alt="AI Assistant" class="virstack-widget-icon" id="virstackWidgetIcon">` : `<span class="virstack-widget-icon" id="virstackWidgetIcon">${this.config.iconUrl}</span>`;
+        container.style.setProperty("--virstack-button-size", `${this.config.buttonSize}px`);
+        container.style.setProperty("--virstack-active-button-size", `${this.config.activeButtonSize}px`);
+        const iconElement = this.createIconElement();
         container.innerHTML = `
                 <div class="virstack-status-tooltip" id="virstackStatusTooltip"></div>
                 <button class="virstack-end-call-button" id="virstackEndCallBtn">End Call</button>
@@ -327,6 +406,9 @@ var VirstackAIWebUIWidget = (() => {
           tooltip: document.getElementById("virstackStatusTooltip"),
           endCallBtn: document.getElementById("virstackEndCallBtn")
         };
+        if (this.isImageUrl(this.config.iconUrl)) {
+          this.elements.button.classList.add("has-image-icon");
+        }
       }
       attachEventListeners() {
         this.elements.button.addEventListener("click", () => this.toggleCall());
@@ -354,10 +436,6 @@ var VirstackAIWebUIWidget = (() => {
             headers: {
               "Content-Type": "application/json"
             }
-            // You can add body data if your endpoint needs it
-            // body: JSON.stringify({
-            //     "agent_id": "agent_74a9564976e475917652a204ff"
-            // })
           });
           if (!response.ok) {
             throw new Error(`Failed to fetch token: ${response.status} ${response.statusText}`);
@@ -503,6 +581,31 @@ var VirstackAIWebUIWidget = (() => {
           }
         }, 1e3);
       }
+      // Method to update icon dynamically
+      setIcon(iconUrl) {
+        this.config.iconUrl = iconUrl;
+        const oldIcon = this.elements.icon;
+        if (oldIcon && oldIcon.parentElement) {
+          const newIconHtml = this.createIconElement();
+          const temp = document.createElement("div");
+          temp.innerHTML = newIconHtml;
+          const newIcon = temp.firstChild;
+          oldIcon.parentElement.replaceChild(newIcon, oldIcon);
+          this.elements.icon = newIcon;
+          if (this.isImageUrl(iconUrl)) {
+            this.elements.button.classList.add("has-image-icon");
+          } else {
+            this.elements.button.classList.remove("has-image-icon");
+          }
+        }
+      }
+      // Method to update button size dynamically
+      setButtonSize(size, activeSize) {
+        this.config.buttonSize = size;
+        this.config.activeButtonSize = activeSize || size * 1.2;
+        this.elements.container.style.setProperty("--virstack-button-size", `${size}px`);
+        this.elements.container.style.setProperty("--virstack-active-button-size", `${this.config.activeButtonSize}px`);
+      }
       destroy() {
         if (this.isCallActive) {
           this.endCall();
@@ -515,12 +618,16 @@ var VirstackAIWebUIWidget = (() => {
     function autoInit() {
       const scripts = document.querySelectorAll("script[data-virstack-widget]");
       scripts.forEach((script) => {
+        const buttonSize = parseInt(script.getAttribute("data-button-size")) || 70;
         const config = {
           tokenUrl: script.getAttribute("data-token-url") || "",
-          iconUrl: script.getAttribute("data-icon-url") || "\u{1F916}",
+          iconUrl: script.getAttribute("data-icon-url") || "",
+          iconEmoji: script.getAttribute("data-icon-emoji") || "\u{1F916}",
           position: script.getAttribute("data-position") || "bottom-right",
           primaryColor: script.getAttribute("data-primary-color") || "#667eea",
-          secondaryColor: script.getAttribute("data-secondary-color") || "#764ba2"
+          secondaryColor: script.getAttribute("data-secondary-color") || "#764ba2",
+          buttonSize,
+          activeButtonSize: parseInt(script.getAttribute("data-active-button-size")) || buttonSize * 1.2
         };
         new VirstackAIWebUIWidget(config);
       });
