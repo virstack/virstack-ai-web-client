@@ -80,7 +80,7 @@ var VirstackAIWebClient = (() => {
         var evt = prefix ? prefix + event : event, handlers = this._events[evt];
         if (!handlers) return [];
         if (handlers.fn) return [handlers.fn];
-        for (var i = 0, l = handlers.length, ee = new Array(l); i < l; i++) {
+        for (var i = 0, l2 = handlers.length, ee = new Array(l2); i < l2; i++) {
           ee[i] = handlers[i].fn;
         }
         return ee;
@@ -116,7 +116,7 @@ var VirstackAIWebClient = (() => {
           }
           listeners2.fn.apply(listeners2.context, args);
         } else {
-          var length = listeners2.length, j;
+          var length = listeners2.length, j2;
           for (i = 0; i < length; i++) {
             if (listeners2[i].once) this.removeListener(event, listeners2[i].fn, void 0, true);
             switch (len) {
@@ -133,8 +133,8 @@ var VirstackAIWebClient = (() => {
                 listeners2[i].fn.call(listeners2[i].context, a1, a2, a3);
                 break;
               default:
-                if (!args) for (j = 1, args = new Array(len - 1); j < len; j++) {
-                  args[j - 1] = arguments[j];
+                if (!args) for (j2 = 1, args = new Array(len - 1); j2 < len; j2++) {
+                  args[j2 - 1] = arguments[j2];
                 }
                 listeners2[i].fn.apply(listeners2[i].context, args);
             }
@@ -203,15 +203,15 @@ var VirstackAIWebClient = (() => {
   var import_index = __toESM(require_eventemitter3(), 1);
 
   // node_modules/livekit-client/dist/livekit-client.esm.mjs
-  function _mergeNamespaces(n, m) {
-    m.forEach(function(e) {
-      e && typeof e !== "string" && !Array.isArray(e) && Object.keys(e).forEach(function(k) {
-        if (k !== "default" && !(k in n)) {
-          var d = Object.getOwnPropertyDescriptor(e, k);
-          Object.defineProperty(n, k, d.get ? d : {
+  function _mergeNamespaces(n, m2) {
+    m2.forEach(function(e) {
+      e && typeof e !== "string" && !Array.isArray(e) && Object.keys(e).forEach(function(k2) {
+        if (k2 !== "default" && !(k2 in n)) {
+          var d2 = Object.getOwnPropertyDescriptor(e, k2);
+          Object.defineProperty(n, k2, d2.get ? d2 : {
             enumerable: true,
             get: function() {
-              return e[k];
+              return e[k2];
             }
           });
         }
@@ -249,10 +249,10 @@ var VirstackAIWebClient = (() => {
     return t;
   }
   function setEnumType(enumObject, typeName, values, opt) {
-    enumObject[enumTypeSymbol] = makeEnumType(typeName, values.map((v) => ({
-      no: v.no,
-      name: v.name,
-      localName: enumObject[v.no]
+    enumObject[enumTypeSymbol] = makeEnumType(typeName, values.map((v2) => ({
+      no: v2.no,
+      name: v2.name,
+      localName: enumObject[v2.no]
     })));
   }
   function makeEnumType(typeName, values, _opt) {
@@ -420,8 +420,8 @@ var VirstackAIWebClient = (() => {
       fromJsonString(jsonString, options) {
         return new type().fromJsonString(jsonString, options);
       },
-      equals(a, b) {
-        return runtime.util.equals(type, a, b);
+      equals(a, b2) {
+        return runtime.util.equals(type, a, b2);
       }
     });
     return type;
@@ -430,9 +430,9 @@ var VirstackAIWebClient = (() => {
     let lowBits = 0;
     let highBits = 0;
     for (let shift = 0; shift < 28; shift += 7) {
-      let b = this.buf[this.pos++];
-      lowBits |= (b & 127) << shift;
-      if ((b & 128) == 0) {
+      let b2 = this.buf[this.pos++];
+      lowBits |= (b2 & 127) << shift;
+      if ((b2 & 128) == 0) {
         this.assertBounds();
         return [lowBits, highBits];
       }
@@ -445,9 +445,9 @@ var VirstackAIWebClient = (() => {
       return [lowBits, highBits];
     }
     for (let shift = 3; shift <= 31; shift += 7) {
-      let b = this.buf[this.pos++];
-      highBits |= (b & 127) << shift;
-      if ((b & 128) == 0) {
+      let b2 = this.buf[this.pos++];
+      highBits |= (b2 & 127) << shift;
+      if ((b2 & 128) == 0) {
         this.assertBounds();
         return [lowBits, highBits];
       }
@@ -580,34 +580,34 @@ var VirstackAIWebClient = (() => {
     }
   }
   function varint32read() {
-    let b = this.buf[this.pos++];
-    let result = b & 127;
-    if ((b & 128) == 0) {
+    let b2 = this.buf[this.pos++];
+    let result = b2 & 127;
+    if ((b2 & 128) == 0) {
       this.assertBounds();
       return result;
     }
-    b = this.buf[this.pos++];
-    result |= (b & 127) << 7;
-    if ((b & 128) == 0) {
+    b2 = this.buf[this.pos++];
+    result |= (b2 & 127) << 7;
+    if ((b2 & 128) == 0) {
       this.assertBounds();
       return result;
     }
-    b = this.buf[this.pos++];
-    result |= (b & 127) << 14;
-    if ((b & 128) == 0) {
+    b2 = this.buf[this.pos++];
+    result |= (b2 & 127) << 14;
+    if ((b2 & 128) == 0) {
       this.assertBounds();
       return result;
     }
-    b = this.buf[this.pos++];
-    result |= (b & 127) << 21;
-    if ((b & 128) == 0) {
+    b2 = this.buf[this.pos++];
+    result |= (b2 & 127) << 21;
+    if ((b2 & 128) == 0) {
       this.assertBounds();
       return result;
     }
-    b = this.buf[this.pos++];
-    result |= (b & 15) << 28;
-    for (let readBytes = 5; (b & 128) !== 0 && readBytes < 10; readBytes++) b = this.buf[this.pos++];
-    if ((b & 128) != 0) throw new Error("invalid varint");
+    b2 = this.buf[this.pos++];
+    result |= (b2 & 15) << 28;
+    for (let readBytes = 5; (b2 & 128) !== 0 && readBytes < 10; readBytes++) b2 = this.buf[this.pos++];
+    if ((b2 & 128) != 0) throw new Error("invalid varint");
     this.assertBounds();
     return result >>> 0;
   }
@@ -724,19 +724,19 @@ var VirstackAIWebClient = (() => {
     LongType2[LongType2["BIGINT"] = 0] = "BIGINT";
     LongType2[LongType2["STRING"] = 1] = "STRING";
   })(LongType || (LongType = {}));
-  function scalarEquals(type, a, b) {
-    if (a === b) {
+  function scalarEquals(type, a, b2) {
+    if (a === b2) {
       return true;
     }
     if (type == ScalarType.BYTES) {
-      if (!(a instanceof Uint8Array) || !(b instanceof Uint8Array)) {
+      if (!(a instanceof Uint8Array) || !(b2 instanceof Uint8Array)) {
         return false;
       }
-      if (a.length !== b.length) {
+      if (a.length !== b2.length) {
         return false;
       }
       for (let i = 0; i < a.length; i++) {
-        if (a[i] !== b[i]) {
+        if (a[i] !== b2[i]) {
           return false;
         }
       }
@@ -748,7 +748,7 @@ var VirstackAIWebClient = (() => {
       case ScalarType.INT64:
       case ScalarType.SFIXED64:
       case ScalarType.SINT64:
-        return a == b;
+        return a == b2;
     }
     return false;
   }
@@ -1194,8 +1194,8 @@ var VirstackAIWebClient = (() => {
       case "scalar":
         return scalarZeroValue(field.T, field.L);
       case "message":
-        const T = field.T, value = new T();
-        return T.fieldWrapper ? T.fieldWrapper.unwrapField(value) : value;
+        const T2 = field.T, value = new T2();
+        return T2.fieldWrapper ? T2.fieldWrapper.unwrapField(value) : value;
       case "map":
         throw "map fields are not allowed to be extensions";
     }
@@ -1232,10 +1232,10 @@ var VirstackAIWebClient = (() => {
       let es = base64Str.length * 3 / 4;
       if (base64Str[base64Str.length - 2] == "=") es -= 2;
       else if (base64Str[base64Str.length - 1] == "=") es -= 1;
-      let bytes = new Uint8Array(es), bytePos = 0, groupPos = 0, b, p = 0;
+      let bytes = new Uint8Array(es), bytePos = 0, groupPos = 0, b2, p2 = 0;
       for (let i = 0; i < base64Str.length; i++) {
-        b = decTable[base64Str.charCodeAt(i)];
-        if (b === void 0) {
+        b2 = decTable[base64Str.charCodeAt(i)];
+        if (b2 === void 0) {
           switch (base64Str[i]) {
             // @ts-ignore TS7029: Fallthrough case in switch
             case "=":
@@ -1254,21 +1254,21 @@ var VirstackAIWebClient = (() => {
         }
         switch (groupPos) {
           case 0:
-            p = b;
+            p2 = b2;
             groupPos = 1;
             break;
           case 1:
-            bytes[bytePos++] = p << 2 | (b & 48) >> 4;
-            p = b;
+            bytes[bytePos++] = p2 << 2 | (b2 & 48) >> 4;
+            p2 = b2;
             groupPos = 2;
             break;
           case 2:
-            bytes[bytePos++] = (p & 15) << 4 | (b & 60) >> 2;
-            p = b;
+            bytes[bytePos++] = (p2 & 15) << 4 | (b2 & 60) >> 2;
+            p2 = b2;
             groupPos = 3;
             break;
           case 3:
-            bytes[bytePos++] = (p & 3) << 6 | b;
+            bytes[bytePos++] = (p2 & 3) << 6 | b2;
             groupPos = 0;
             break;
         }
@@ -1280,29 +1280,29 @@ var VirstackAIWebClient = (() => {
      * Encode a byte array to a base64 string.
      */
     enc(bytes) {
-      let base64 = "", groupPos = 0, b, p = 0;
+      let base64 = "", groupPos = 0, b2, p2 = 0;
       for (let i = 0; i < bytes.length; i++) {
-        b = bytes[i];
+        b2 = bytes[i];
         switch (groupPos) {
           case 0:
-            base64 += encTable[b >> 2];
-            p = (b & 3) << 4;
+            base64 += encTable[b2 >> 2];
+            p2 = (b2 & 3) << 4;
             groupPos = 1;
             break;
           case 1:
-            base64 += encTable[p | b >> 4];
-            p = (b & 15) << 2;
+            base64 += encTable[p2 | b2 >> 4];
+            p2 = (b2 & 15) << 2;
             groupPos = 2;
             break;
           case 2:
-            base64 += encTable[p | b >> 6];
-            base64 += encTable[b & 63];
+            base64 += encTable[p2 | b2 >> 6];
+            base64 += encTable[b2 & 63];
             groupPos = 0;
             break;
         }
       }
       if (groupPos) {
-        base64 += encTable[p];
+        base64 += encTable[p2];
         base64 += "=";
         if (groupPos == 1) base64 += "=";
       }
@@ -1331,13 +1331,13 @@ var VirstackAIWebClient = (() => {
       }
     }
     const writer2 = writeOpt.writerFactory();
-    let f = extension.field;
-    if (!f.opt && !f.repeated && (f.kind == "enum" || f.kind == "scalar")) {
-      f = Object.assign(Object.assign({}, extension.field), {
+    let f2 = extension.field;
+    if (!f2.opt && !f2.repeated && (f2.kind == "enum" || f2.kind == "scalar")) {
+      f2 = Object.assign(Object.assign({}, extension.field), {
         opt: true
       });
     }
-    extension.runtime.bin.writeField(f, value, writer2, writeOpt);
+    extension.runtime.bin.writeField(f2, value, writer2, writeOpt);
     const reader = readOpt.readerFactory(writer2.finish());
     while (reader.pos < reader.len) {
       const [no, wireType] = reader.tag();
@@ -1406,7 +1406,7 @@ var VirstackAIWebClient = (() => {
     if (arg === null || typeof arg != "object") {
       return false;
     }
-    if (!Object.getOwnPropertyNames(Message.prototype).every((m) => m in arg && typeof arg[m] == "function")) {
+    if (!Object.getOwnPropertyNames(Message.prototype).every((m2) => m2 in arg && typeof arg[m2] == "function")) {
       return false;
     }
     const actualType = arg.getType();
@@ -1529,9 +1529,9 @@ var VirstackAIWebClient = (() => {
             }
           }
         } catch (e) {
-          const m = field ? "cannot encode field ".concat(type.typeName, ".").concat(field.name, " to JSON") : "cannot encode message ".concat(type.typeName, " to JSON");
+          const m2 = field ? "cannot encode field ".concat(type.typeName, ".").concat(field.name, " to JSON") : "cannot encode message ".concat(type.typeName, " to JSON");
           const r2 = e instanceof Error ? e.message : String(e);
-          throw new Error(m + (r2.length > 0 ? ": ".concat(r2) : ""));
+          throw new Error(m2 + (r2.length > 0 ? ": ".concat(r2) : ""));
         }
         return json;
       },
@@ -1592,11 +1592,11 @@ var VirstackAIWebClient = (() => {
             try {
               targetArray.push(readScalar$1(field.T, jsonItem, field.L, true));
             } catch (e) {
-              let m = "cannot decode field ".concat(parentType.typeName, ".").concat(field.name, " from JSON: ").concat(debugJsonValue(jsonItem));
+              let m2 = "cannot decode field ".concat(parentType.typeName, ".").concat(field.name, " from JSON: ").concat(debugJsonValue(jsonItem));
               if (e instanceof Error && e.message.length > 0) {
-                m += ": ".concat(e.message);
+                m2 += ": ".concat(e.message);
               }
-              throw new Error(m);
+              throw new Error(m2);
             }
             break;
         }
@@ -1617,11 +1617,11 @@ var VirstackAIWebClient = (() => {
         try {
           key = readMapKey(field.K, jsonMapKey);
         } catch (e) {
-          let m = "cannot decode map key for field ".concat(parentType.typeName, ".").concat(field.name, " from JSON: ").concat(debugJsonValue(jsonValue));
+          let m2 = "cannot decode map key for field ".concat(parentType.typeName, ".").concat(field.name, " from JSON: ").concat(debugJsonValue(jsonValue));
           if (e instanceof Error && e.message.length > 0) {
-            m += ": ".concat(e.message);
+            m2 += ": ".concat(e.message);
           }
-          throw new Error(m);
+          throw new Error(m2);
         }
         switch (field.V.kind) {
           case "message":
@@ -1637,11 +1637,11 @@ var VirstackAIWebClient = (() => {
             try {
               targetMap[key] = readScalar$1(field.V.T, jsonMapValue, LongType.BIGINT, true);
             } catch (e) {
-              let m = "cannot decode map value for field ".concat(parentType.typeName, ".").concat(field.name, " from JSON: ").concat(debugJsonValue(jsonValue));
+              let m2 = "cannot decode map value for field ".concat(parentType.typeName, ".").concat(field.name, " from JSON: ").concat(debugJsonValue(jsonValue));
               if (e instanceof Error && e.message.length > 0) {
-                m += ": ".concat(e.message);
+                m2 += ": ".concat(e.message);
               }
-              throw new Error(m);
+              throw new Error(m2);
             }
             break;
         }
@@ -1694,11 +1694,11 @@ var VirstackAIWebClient = (() => {
                 break;
             }
           } catch (e) {
-            let m = "cannot decode field ".concat(parentType.typeName, ".").concat(field.name, " from JSON: ").concat(debugJsonValue(jsonValue));
+            let m2 = "cannot decode field ".concat(parentType.typeName, ".").concat(field.name, " from JSON: ").concat(debugJsonValue(jsonValue));
             if (e instanceof Error && e.message.length > 0) {
-              m += ": ".concat(e.message);
+              m2 += ": ".concat(e.message);
             }
-            throw new Error(m);
+            throw new Error(m2);
           }
           break;
       }
@@ -1979,20 +1979,20 @@ var VirstackAIWebClient = (() => {
         delete message[unknownFieldsSymbol];
       },
       writeUnknownFields(message, writer2) {
-        const m = message;
-        const c = m[unknownFieldsSymbol];
-        if (c) {
-          for (const f of c) {
-            writer2.tag(f.no, f.wireType).raw(f.data);
+        const m2 = message;
+        const c2 = m2[unknownFieldsSymbol];
+        if (c2) {
+          for (const f2 of c2) {
+            writer2.tag(f2.no, f2.wireType).raw(f2.data);
           }
         }
       },
       onUnknownField(message, no, wireType, data) {
-        const m = message;
-        if (!Array.isArray(m[unknownFieldsSymbol])) {
-          m[unknownFieldsSymbol] = [];
+        const m2 = message;
+        if (!Array.isArray(m2[unknownFieldsSymbol])) {
+          m2[unknownFieldsSymbol] = [];
         }
-        m[unknownFieldsSymbol].push({
+        m2[unknownFieldsSymbol].push({
           no,
           wireType,
           data
@@ -2164,8 +2164,8 @@ var VirstackAIWebClient = (() => {
     return [key, val];
   }
   function readScalarLTString(reader, type) {
-    const v = readScalar(reader, type);
-    return typeof v == "bigint" ? v.toString() : v;
+    const v2 = readScalar(reader, type);
+    return typeof v2 == "bigint" ? v2.toString() : v2;
   }
   function readScalar(reader, type) {
     switch (type) {
@@ -2357,8 +2357,8 @@ var VirstackAIWebClient = (() => {
                 case "scalar":
                 case "enum":
                   if (member.V.T === ScalarType.BYTES) {
-                    for (const [k, v] of Object.entries(s[localName])) {
-                      t[localName][k] = toU8Arr(v);
+                    for (const [k2, v2] of Object.entries(s[localName])) {
+                      t[localName][k2] = toU8Arr(v2);
                     }
                   } else {
                     Object.assign(t[localName], s[localName]);
@@ -2366,12 +2366,12 @@ var VirstackAIWebClient = (() => {
                   break;
                 case "message":
                   const messageType = member.V.T;
-                  for (const k of Object.keys(s[localName])) {
-                    let val2 = s[localName][k];
+                  for (const k2 of Object.keys(s[localName])) {
+                    let val2 = s[localName][k2];
                     if (!messageType.fieldWrapper) {
                       val2 = new messageType(val2);
                     }
-                    t[localName][k] = val2;
+                    t[localName][k2] = val2;
                   }
                   break;
               }
@@ -2400,42 +2400,42 @@ var VirstackAIWebClient = (() => {
         }
       },
       // TODO use isFieldSet() here to support future field presence
-      equals(type, a, b) {
-        if (a === b) {
+      equals(type, a, b2) {
+        if (a === b2) {
           return true;
         }
-        if (!a || !b) {
+        if (!a || !b2) {
           return false;
         }
-        return type.fields.byMember().every((m) => {
-          const va = a[m.localName];
-          const vb = b[m.localName];
-          if (m.repeated) {
+        return type.fields.byMember().every((m2) => {
+          const va = a[m2.localName];
+          const vb = b2[m2.localName];
+          if (m2.repeated) {
             if (va.length !== vb.length) {
               return false;
             }
-            switch (m.kind) {
+            switch (m2.kind) {
               case "message":
-                return va.every((a2, i) => m.T.equals(a2, vb[i]));
+                return va.every((a2, i) => m2.T.equals(a2, vb[i]));
               case "scalar":
-                return va.every((a2, i) => scalarEquals(m.T, a2, vb[i]));
+                return va.every((a2, i) => scalarEquals(m2.T, a2, vb[i]));
               case "enum":
                 return va.every((a2, i) => scalarEquals(ScalarType.INT32, a2, vb[i]));
             }
-            throw new Error("repeated cannot contain ".concat(m.kind));
+            throw new Error("repeated cannot contain ".concat(m2.kind));
           }
-          switch (m.kind) {
+          switch (m2.kind) {
             case "message":
-              return m.T.equals(va, vb);
+              return m2.T.equals(va, vb);
             case "enum":
               return scalarEquals(ScalarType.INT32, va, vb);
             case "scalar":
-              return scalarEquals(m.T, va, vb);
+              return scalarEquals(m2.T, va, vb);
             case "oneof":
               if (va.case !== vb.case) {
                 return false;
               }
-              const s = m.findField(va.case);
+              const s = m2.findField(va.case);
               if (s === void 0) {
                 return true;
               }
@@ -2450,15 +2450,15 @@ var VirstackAIWebClient = (() => {
               throw new Error("oneof cannot contain ".concat(s.kind));
             case "map":
               const keys = Object.keys(va).concat(Object.keys(vb));
-              switch (m.V.kind) {
+              switch (m2.V.kind) {
                 case "message":
-                  const messageType = m.V.T;
-                  return keys.every((k) => messageType.equals(va[k], vb[k]));
+                  const messageType = m2.V.T;
+                  return keys.every((k2) => messageType.equals(va[k2], vb[k2]));
                 case "enum":
-                  return keys.every((k) => scalarEquals(ScalarType.INT32, va[k], vb[k]));
+                  return keys.every((k2) => scalarEquals(ScalarType.INT32, va[k2], vb[k2]));
                 case "scalar":
-                  const scalarType = m.V.T;
-                  return keys.every((k) => scalarEquals(scalarType, va[k], vb[k]));
+                  const scalarType = m2.V.T;
+                  return keys.every((k2) => scalarEquals(scalarType, va[k2], vb[k2]));
               }
               break;
           }
@@ -2474,12 +2474,12 @@ var VirstackAIWebClient = (() => {
             copy = source.map(cloneSingularField);
           } else if (member.kind == "map") {
             copy = any[member.localName];
-            for (const [key, v] of Object.entries(source)) {
-              copy[key] = cloneSingularField(v);
+            for (const [key, v2] of Object.entries(source)) {
+              copy[key] = cloneSingularField(v2);
             }
           } else if (member.kind == "oneof") {
-            const f = member.findField(source.case);
-            copy = f ? {
+            const f2 = member.findField(source.case);
+            copy = f2 ? {
               case: source.case,
               value: cloneSingularField(source.value)
             } : {
@@ -2505,9 +2505,9 @@ var VirstackAIWebClient = (() => {
       return value.clone();
     }
     if (value instanceof Uint8Array) {
-      const c = new Uint8Array(value.byteLength);
-      c.set(value);
-      return c;
+      const c2 = new Uint8Array(value.byteLength);
+      c2.set(value);
+      return c2;
     }
     return value;
   }
@@ -2542,8 +2542,8 @@ var VirstackAIWebClient = (() => {
     findJsonName(jsonName) {
       if (!this.jsonNames) {
         const t = {};
-        for (const f of this.list()) {
-          t[f.jsonName] = t[f.name] = f;
+        for (const f2 of this.list()) {
+          t[f2.jsonName] = t[f2.name] = f2;
         }
         this.jsonNames = t;
       }
@@ -2552,8 +2552,8 @@ var VirstackAIWebClient = (() => {
     find(fieldNo) {
       if (!this.numbers) {
         const t = {};
-        for (const f of this.list()) {
-          t[f.no] = f;
+        for (const f2 of this.list()) {
+          t[f2.no] = f2;
         }
         this.numbers = t;
       }
@@ -2567,7 +2567,7 @@ var VirstackAIWebClient = (() => {
     }
     byNumber() {
       if (!this.numbersAsc) {
-        this.numbersAsc = this.list().concat().sort((a, b) => a.no - b.no);
+        this.numbersAsc = this.list().concat().sort((a, b2) => a.no - b2.no);
       }
       return this.numbersAsc;
     }
@@ -2576,14 +2576,14 @@ var VirstackAIWebClient = (() => {
         this.members = [];
         const a = this.members;
         let o;
-        for (const f of this.list()) {
-          if (f.oneof) {
-            if (f.oneof !== o) {
-              o = f.oneof;
+        for (const f2 of this.list()) {
+          if (f2.oneof) {
+            if (f2.oneof !== o) {
+              o = f2.oneof;
               a.push(o);
             }
           } else {
-            a.push(f);
+            a.push(f2);
           }
         }
       }
@@ -2603,10 +2603,10 @@ var VirstackAIWebClient = (() => {
   var fieldJsonName = protoCamelCase;
   function protoCamelCase(snakeCase) {
     let capNext = false;
-    const b = [];
+    const b2 = [];
     for (let i = 0; i < snakeCase.length; i++) {
-      let c = snakeCase.charAt(i);
-      switch (c) {
+      let c2 = snakeCase.charAt(i);
+      switch (c2) {
         case "_":
           capNext = true;
           break;
@@ -2620,19 +2620,19 @@ var VirstackAIWebClient = (() => {
         case "7":
         case "8":
         case "9":
-          b.push(c);
+          b2.push(c2);
           capNext = false;
           break;
         default:
           if (capNext) {
             capNext = false;
-            c = c.toUpperCase();
+            c2 = c2.toUpperCase();
           }
-          b.push(c);
+          b2.push(c2);
           break;
       }
     }
-    return b.join("");
+    return b2.join("");
   }
   var reservedObjectProperties = /* @__PURE__ */ new Set([
     // names reserved by JavaScript
@@ -2699,19 +2699,19 @@ var VirstackAIWebClient = (() => {
     const r2 = [];
     let o;
     for (const field of typeof fieldInfos == "function" ? fieldInfos() : fieldInfos) {
-      const f = field;
-      f.localName = localFieldName(field.name, field.oneof !== void 0);
-      f.jsonName = (_a = field.jsonName) !== null && _a !== void 0 ? _a : fieldJsonName(field.name);
-      f.repeated = (_b = field.repeated) !== null && _b !== void 0 ? _b : false;
+      const f2 = field;
+      f2.localName = localFieldName(field.name, field.oneof !== void 0);
+      f2.jsonName = (_a = field.jsonName) !== null && _a !== void 0 ? _a : fieldJsonName(field.name);
+      f2.repeated = (_b = field.repeated) !== null && _b !== void 0 ? _b : false;
       if (field.kind == "scalar") {
-        f.L = (_c = field.L) !== null && _c !== void 0 ? _c : LongType.BIGINT;
+        f2.L = (_c = field.L) !== null && _c !== void 0 ? _c : LongType.BIGINT;
       }
-      f.delimited = (_d = field.delimited) !== null && _d !== void 0 ? _d : false;
-      f.req = (_e = field.req) !== null && _e !== void 0 ? _e : false;
-      f.opt = (_f = field.opt) !== null && _f !== void 0 ? _f : false;
+      f2.delimited = (_d = field.delimited) !== null && _d !== void 0 ? _d : false;
+      f2.req = (_e = field.req) !== null && _e !== void 0 ? _e : false;
+      f2.opt = (_f = field.opt) !== null && _f !== void 0 ? _f : false;
       if (field.packed === void 0) {
         {
-          f.packed = field.kind == "enum" || field.kind == "scalar" && field.T != ScalarType.BYTES && field.T != ScalarType.STRING;
+          f2.packed = field.kind == "enum" || field.kind == "scalar" && field.T != ScalarType.BYTES && field.T != ScalarType.STRING;
         }
       }
       if (field.oneof !== void 0) {
@@ -2719,10 +2719,10 @@ var VirstackAIWebClient = (() => {
         if (!o || o.name != ooname) {
           o = new InternalOneofInfo(ooname);
         }
-        f.oneof = o;
-        o.addField(f);
+        f2.oneof = o;
+        o.addField(f2);
       }
-      r2.push(f);
+      r2.push(f2);
     }
     return r2;
   }
@@ -4953,8 +4953,8 @@ var VirstackAIWebClient = (() => {
     /* ScalarType.STRING */
   }]);
   var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
-  function getDefaultExportFromCjs(x) {
-    return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
+  function getDefaultExportFromCjs(x2) {
+    return x2 && x2.__esModule && Object.prototype.hasOwnProperty.call(x2, "default") ? x2["default"] : x2;
   }
   var loglevel = { exports: {} };
   (function(module) {
@@ -5234,13 +5234,13 @@ var VirstackAIWebClient = (() => {
       return retryDelay + Math.random() * 1e3;
     }
   };
-  function __awaiter(thisArg, _arguments, P, generator) {
+  function __awaiter(thisArg, _arguments, P2, generator) {
     function adopt(value) {
-      return value instanceof P ? value : new P(function(resolve) {
+      return value instanceof P2 ? value : new P2(function(resolve) {
         resolve(value);
       });
     }
-    return new (P || (P = Promise))(function(resolve, reject) {
+    return new (P2 || (P2 = Promise))(function(resolve, reject) {
       function fulfilled(value) {
         try {
           step(generator.next(value));
@@ -5262,8 +5262,8 @@ var VirstackAIWebClient = (() => {
     });
   }
   function __values(o) {
-    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
-    if (m) return m.call(o);
+    var s = typeof Symbol === "function" && Symbol.iterator, m2 = s && o[s], i = 0;
+    if (m2) return m2.call(o);
     if (o && typeof o.length === "number") return {
       next: function() {
         if (o && i >= o.length) o = void 0;
@@ -5274,20 +5274,20 @@ var VirstackAIWebClient = (() => {
   }
   function __asyncValues(o) {
     if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var m = o[Symbol.asyncIterator], i;
-    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function() {
+    var m2 = o[Symbol.asyncIterator], i;
+    return m2 ? m2.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function() {
       return this;
     }, i);
     function verb(n) {
-      i[n] = o[n] && function(v) {
+      i[n] = o[n] && function(v2) {
         return new Promise(function(resolve, reject) {
-          v = o[n](v), settle(resolve, reject, v.done, v.value);
+          v2 = o[n](v2), settle(resolve, reject, v2.done, v2.value);
         });
       };
     }
-    function settle(resolve, reject, d, v) {
-      Promise.resolve(v).then(function(v2) {
-        resolve({ value: v2, done: d });
+    function settle(resolve, reject, d2, v2) {
+      Promise.resolve(v2).then(function(v3) {
+        resolve({ value: v3, done: d2 });
       }, reject);
     }
   }
@@ -5391,7 +5391,7 @@ var VirstackAIWebClient = (() => {
     return true;
   };
   function _addListener(target, type, listener, prepend) {
-    var m;
+    var m2;
     var events2;
     var existing;
     checkListener(listener);
@@ -5417,15 +5417,15 @@ var VirstackAIWebClient = (() => {
       } else {
         existing.push(listener);
       }
-      m = _getMaxListeners(target);
-      if (m > 0 && existing.length > m && !existing.warned) {
+      m2 = _getMaxListeners(target);
+      if (m2 > 0 && existing.length > m2 && !existing.warned) {
         existing.warned = true;
-        var w = new Error("Possible EventEmitter memory leak detected. " + existing.length + " " + String(type) + " listeners added. Use emitter.setMaxListeners() to increase limit");
-        w.name = "MaxListenersExceededWarning";
-        w.emitter = target;
-        w.type = type;
-        w.count = existing.length;
-        ProcessEmitWarning(w);
+        var w2 = new Error("Possible EventEmitter memory leak detected. " + existing.length + " " + String(type) + " listeners added. Use emitter.setMaxListeners() to increase limit");
+        w2.name = "MaxListenersExceededWarning";
+        w2.emitter = target;
+        w2.type = type;
+        w2.count = existing.length;
+        ProcessEmitWarning(w2);
       }
     }
     return target;
@@ -5835,17 +5835,17 @@ var VirstackAIWebClient = (() => {
     if (!navigator2.mediaDevices) {
       return;
     }
-    const constraintsToChrome_ = function(c) {
-      if (typeof c !== "object" || c.mandatory || c.optional) {
-        return c;
+    const constraintsToChrome_ = function(c2) {
+      if (typeof c2 !== "object" || c2.mandatory || c2.optional) {
+        return c2;
       }
       const cc = {};
-      Object.keys(c).forEach((key) => {
+      Object.keys(c2).forEach((key) => {
         if (key === "require" || key === "advanced" || key === "mediaSource") {
           return;
         }
-        const r2 = typeof c[key] === "object" ? c[key] : {
-          ideal: c[key]
+        const r2 = typeof c2[key] === "object" ? c2[key] : {
+          ideal: c2[key]
         };
         if (r2.exact !== void 0 && typeof r2.exact === "number") {
           r2.min = r2.max = r2.exact;
@@ -5882,8 +5882,8 @@ var VirstackAIWebClient = (() => {
           });
         }
       });
-      if (c.advanced) {
-        cc.optional = (cc.optional || []).concat(c.advanced);
+      if (c2.advanced) {
+        cc.optional = (cc.optional || []).concat(c2.advanced);
       }
       return cc;
     };
@@ -5893,9 +5893,9 @@ var VirstackAIWebClient = (() => {
       }
       constraints = JSON.parse(JSON.stringify(constraints));
       if (constraints && typeof constraints.audio === "object") {
-        const remap = function(obj, a, b) {
-          if (a in obj && !(b in obj)) {
-            obj[b] = obj[a];
+        const remap = function(obj, a, b2) {
+          if (a in obj && !(b2 in obj)) {
+            obj[b2] = obj[a];
             delete obj[a];
           }
         };
@@ -5920,8 +5920,8 @@ var VirstackAIWebClient = (() => {
           }
           if (matches) {
             return navigator2.mediaDevices.enumerateDevices().then((devices) => {
-              devices = devices.filter((d) => d.kind === "videoinput");
-              let dev = devices.find((d) => matches.some((match) => d.label.toLowerCase().includes(match)));
+              devices = devices.filter((d2) => d2.kind === "videoinput");
+              let dev = devices.find((d2) => matches.some((match) => d2.label.toLowerCase().includes(match)));
               if (!dev && devices.length && matches.includes("back")) {
                 dev = devices[devices.length - 1];
               }
@@ -5969,8 +5969,8 @@ var VirstackAIWebClient = (() => {
       };
     };
     const getUserMedia_ = function(constraints, onSuccess, onError) {
-      shimConstraints_(constraints, (c) => {
-        navigator2.webkitGetUserMedia(c, onSuccess, (e) => {
+      shimConstraints_(constraints, (c2) => {
+        navigator2.webkitGetUserMedia(c2, onSuccess, (e) => {
           if (onError) {
             onError(shimError_(e));
           }
@@ -5981,8 +5981,8 @@ var VirstackAIWebClient = (() => {
     if (navigator2.mediaDevices.getUserMedia) {
       const origGetUserMedia = navigator2.mediaDevices.getUserMedia.bind(navigator2.mediaDevices);
       navigator2.mediaDevices.getUserMedia = function(cs) {
-        return shimConstraints_(cs, (c) => origGetUserMedia(c).then((stream) => {
-          if (c.audio && !stream.getAudioTracks().length || c.video && !stream.getVideoTracks().length) {
+        return shimConstraints_(cs, (c2) => origGetUserMedia(c2).then((stream) => {
+          if (c2.audio && !stream.getAudioTracks().length || c2.video && !stream.getVideoTracks().length) {
             stream.getTracks().forEach((track) => {
               track.stop();
             });
@@ -6002,11 +6002,11 @@ var VirstackAIWebClient = (() => {
         get() {
           return this._ontrack;
         },
-        set(f) {
+        set(f2) {
           if (this._ontrack) {
             this.removeEventListener("track", this._ontrack);
           }
-          this.addEventListener("track", this._ontrack = f);
+          this.addEventListener("track", this._ontrack = f2);
         },
         enumerable: true,
         configurable: true
@@ -6507,20 +6507,20 @@ var VirstackAIWebClient = (() => {
       navigator2.mediaDevices.getUserMedia(constraints).then(onSuccess, onError);
     };
     if (!(browserDetails2.version > 55 && "autoGainControl" in navigator2.mediaDevices.getSupportedConstraints())) {
-      const remap = function(obj, a, b) {
-        if (a in obj && !(b in obj)) {
-          obj[b] = obj[a];
+      const remap = function(obj, a, b2) {
+        if (a in obj && !(b2 in obj)) {
+          obj[b2] = obj[a];
           delete obj[a];
         }
       };
       const nativeGetUserMedia = navigator2.mediaDevices.getUserMedia.bind(navigator2.mediaDevices);
-      navigator2.mediaDevices.getUserMedia = function(c) {
-        if (typeof c === "object" && typeof c.audio === "object") {
-          c = JSON.parse(JSON.stringify(c));
-          remap(c.audio, "autoGainControl", "mozAutoGainControl");
-          remap(c.audio, "noiseSuppression", "mozNoiseSuppression");
+      navigator2.mediaDevices.getUserMedia = function(c2) {
+        if (typeof c2 === "object" && typeof c2.audio === "object") {
+          c2 = JSON.parse(JSON.stringify(c2));
+          remap(c2.audio, "autoGainControl", "mozAutoGainControl");
+          remap(c2.audio, "noiseSuppression", "mozNoiseSuppression");
         }
-        return nativeGetUserMedia(c);
+        return nativeGetUserMedia(c2);
       };
       if (MediaStreamTrack2 && MediaStreamTrack2.prototype.getSettings) {
         const nativeGetSettings = MediaStreamTrack2.prototype.getSettings;
@@ -6533,13 +6533,13 @@ var VirstackAIWebClient = (() => {
       }
       if (MediaStreamTrack2 && MediaStreamTrack2.prototype.applyConstraints) {
         const nativeApplyConstraints = MediaStreamTrack2.prototype.applyConstraints;
-        MediaStreamTrack2.prototype.applyConstraints = function(c) {
-          if (this.kind === "audio" && typeof c === "object") {
-            c = JSON.parse(JSON.stringify(c));
-            remap(c, "autoGainControl", "mozAutoGainControl");
-            remap(c, "noiseSuppression", "mozNoiseSuppression");
+        MediaStreamTrack2.prototype.applyConstraints = function(c2) {
+          if (this.kind === "audio" && typeof c2 === "object") {
+            c2 = JSON.parse(JSON.stringify(c2));
+            remap(c2, "autoGainControl", "mozAutoGainControl");
+            remap(c2, "noiseSuppression", "mozNoiseSuppression");
           }
-          return nativeApplyConstraints.apply(this, [c]);
+          return nativeApplyConstraints.apply(this, [c2]);
         };
       }
     }
@@ -6887,12 +6887,12 @@ var VirstackAIWebClient = (() => {
         get() {
           return this._onaddstream;
         },
-        set(f) {
+        set(f2) {
           if (this._onaddstream) {
             this.removeEventListener("addstream", this._onaddstream);
             this.removeEventListener("track", this._onaddstreampoly);
           }
-          this.addEventListener("addstream", this._onaddstream = f);
+          this.addEventListener("addstream", this._onaddstream = f2);
           this.addEventListener("track", this._onaddstreampoly = (e) => {
             e.streams.forEach((stream) => {
               if (!this._remoteStreams) {
@@ -7273,8 +7273,8 @@ var VirstackAIWebClient = (() => {
       const parsed = {};
       let kv;
       const parts = line.substring(line.indexOf(" ") + 1).split(";");
-      for (let j = 0; j < parts.length; j++) {
-        kv = parts[j].trim().split("=");
+      for (let j2 = 0; j2 < parts.length; j2++) {
+        kv = parts[j2].trim().split("=");
         parsed[kv[0].trim()] = kv[1];
       }
       return parsed;
@@ -8039,7 +8039,7 @@ var VirstackAIWebClient = (() => {
         return nativeSetLocalDescription.apply(this, [desc]);
       }
       const func = desc.type === "offer" ? this.createOffer : this.createAnswer;
-      return func.apply(this).then((d) => nativeSetLocalDescription.apply(this, [d]));
+      return func.apply(this).then((d2) => nativeSetLocalDescription.apply(this, [d2]));
     };
   }
   var commonShim = /* @__PURE__ */ Object.freeze({
@@ -8451,40 +8451,40 @@ var VirstackAIWebClient = (() => {
   function r(r2, e, n) {
     var i, t, o;
     void 0 === e && (e = 50), void 0 === n && (n = {});
-    var a = null != (i = n.isImmediate) && i, u = null != (t = n.callback) && t, c = n.maxWait, v = Date.now(), l = [];
-    function f() {
-      if (void 0 !== c) {
-        var r3 = Date.now() - v;
-        if (r3 + e >= c) return c - r3;
+    var a = null != (i = n.isImmediate) && i, u2 = null != (t = n.callback) && t, c2 = n.maxWait, v2 = Date.now(), l2 = [];
+    function f2() {
+      if (void 0 !== c2) {
+        var r3 = Date.now() - v2;
+        if (r3 + e >= c2) return c2 - r3;
       }
       return e;
     }
-    var d = function() {
+    var d2 = function() {
       var e2 = [].slice.call(arguments), n2 = this;
       return new Promise(function(i2, t2) {
-        var c2 = a && void 0 === o;
+        var c3 = a && void 0 === o;
         if (void 0 !== o && clearTimeout(o), o = setTimeout(function() {
-          if (o = void 0, v = Date.now(), !a) {
+          if (o = void 0, v2 = Date.now(), !a) {
             var i3 = r2.apply(n2, e2);
-            u && u(i3), l.forEach(function(r3) {
+            u2 && u2(i3), l2.forEach(function(r3) {
               return (0, r3.resolve)(i3);
-            }), l = [];
+            }), l2 = [];
           }
-        }, f()), c2) {
-          var d2 = r2.apply(n2, e2);
-          return u && u(d2), i2(d2);
+        }, f2()), c3) {
+          var d3 = r2.apply(n2, e2);
+          return u2 && u2(d3), i2(d3);
         }
-        l.push({
+        l2.push({
           resolve: i2,
           reject: t2
         });
       });
     };
-    return d.cancel = function(r3) {
-      void 0 !== o && clearTimeout(o), l.forEach(function(e2) {
+    return d2.cancel = function(r3) {
+      void 0 !== o && clearTimeout(o), l2.forEach(function(e2) {
         return (0, e2.reject)(r3);
-      }), l = [];
-    }, d;
+      }), l2 = [];
+    }, d2;
   }
   var commonVersionIdentifier = /version\/(\d+(\.?_?\d+)+)/i;
   var browserDetails;
@@ -8937,8 +8937,8 @@ var VirstackAIWebClient = (() => {
       StreamState2["Paused"] = "paused";
       StreamState2["Unknown"] = "unknown";
     })(StreamState$1 = Track2.StreamState || (Track2.StreamState = {}));
-    function kindToProto(k) {
-      switch (k) {
+    function kindToProto(k2) {
+      switch (k2) {
         case Kind.Audio:
           return TrackType.AUDIO;
         case Kind.Video:
@@ -9290,8 +9290,8 @@ var VirstackAIWebClient = (() => {
     return ((_a = getBrowser()) === null || _a === void 0 ? void 0 : _a.name) === "Safari";
   }
   function isSafari17() {
-    const b = getBrowser();
-    return (b === null || b === void 0 ? void 0 : b.name) === "Safari" && b.version.startsWith("17.");
+    const b2 = getBrowser();
+    return (b2 === null || b2 === void 0 ? void 0 : b2.name) === "Safari" && b2.version.startsWith("17.");
   }
   function isMobile() {
     var _a, _b;
@@ -9356,13 +9356,13 @@ var VirstackAIWebClient = (() => {
   function compareVersions(v1, v2) {
     const parts1 = v1.split(".");
     const parts2 = v2.split(".");
-    const k = Math.min(parts1.length, parts2.length);
-    for (let i = 0; i < k; ++i) {
+    const k2 = Math.min(parts1.length, parts2.length);
+    for (let i = 0; i < k2; ++i) {
       const p1 = parseInt(parts1[i], 10);
       const p2 = parseInt(parts2[i], 10);
       if (p1 > p2) return 1;
       if (p1 < p2) return -1;
-      if (i === k - 1 && p1 === p2) return 0;
+      if (i === k2 - 1 && p1 === p2) return 0;
     }
     if (v1 === "" && v2 !== "") {
       return -1;
@@ -9624,7 +9624,7 @@ var VirstackAIWebClient = (() => {
           let devices = yield navigator.mediaDevices.enumerateDevices();
           if (requestPermissions && // for safari we need to skip this check, as otherwise it will re-acquire user media and fail on iOS https://bugs.webkit.org/show_bug.cgi?id=179363
           !(isSafari() && _this.hasDeviceInUse(kind))) {
-            const isDummyDeviceOrEmpty = devices.filter((d) => d.kind === kind).length === 0 || devices.some((device) => {
+            const isDummyDeviceOrEmpty = devices.filter((d2) => d2.kind === kind).length === 0 || devices.some((device) => {
               const noLabel = device.label === "";
               const isRelevant = kind ? device.kind === kind : true;
               return noLabel && isRelevant;
@@ -9654,12 +9654,12 @@ var VirstackAIWebClient = (() => {
           return deviceId;
         }
         const devices = yield this.getDevices(kind);
-        const defaultDevice = devices.find((d) => d.deviceId === defaultId);
+        const defaultDevice = devices.find((d2) => d2.deviceId === defaultId);
         if (!defaultDevice) {
           livekitLogger.warn("could not reliably determine default device");
           return void 0;
         }
-        const device = devices.find((d) => d.deviceId !== defaultId && d.groupId === (groupId !== null && groupId !== void 0 ? groupId : defaultDevice.groupId));
+        const device = devices.find((d2) => d2.deviceId !== defaultId && d2.groupId === (groupId !== null && groupId !== void 0 ? groupId : defaultDevice.groupId));
         if (!device) {
           livekitLogger.warn("could not reliably determine default device");
           return void 0;
@@ -10236,7 +10236,7 @@ var VirstackAIWebClient = (() => {
             });
           });
         }
-      }).on(RoomEvent.TrackUnsubscribed, (track, _, participant) => {
+      }).on(RoomEvent.TrackUnsubscribed, (track, _2, participant) => {
         var _a;
         const msg = {
           kind: "removeTransform",
@@ -11636,8 +11636,8 @@ var VirstackAIWebClient = (() => {
   });
   var grammarExports = grammar$2.exports;
   (function(exports) {
-    var toIntIfInt = function(v) {
-      return String(Number(v)) === v ? Number(v) : v;
+    var toIntIfInt = function(v2) {
+      return String(Number(v2)) === v2 ? Number(v2) : v2;
     };
     var attachProperties = function(match, location, names, rawName) {
       if (rawName && !names) {
@@ -11670,9 +11670,9 @@ var VirstackAIWebClient = (() => {
     var validLine = RegExp.prototype.test.bind(/^([a-z])=(.*)/);
     exports.parse = function(sdp2) {
       var session = {}, media = [], location = session;
-      sdp2.split(/(\r\n|\r|\n)/).filter(validLine).forEach(function(l) {
-        var type = l[0];
-        var content = l.slice(2);
+      sdp2.split(/(\r\n|\r|\n)/).filter(validLine).forEach(function(l2) {
+        var type = l2[0];
+        var content = l2.slice(2);
         if (type === "m") {
           media.push({
             rtp: [],
@@ -11680,8 +11680,8 @@ var VirstackAIWebClient = (() => {
           });
           location = media[media.length - 1];
         }
-        for (var j = 0; j < (grammar2[type] || []).length; j += 1) {
-          var obj = grammar2[type][j];
+        for (var j2 = 0; j2 < (grammar2[type] || []).length; j2 += 1) {
+          var obj = grammar2[type][j2];
           if (obj.reg.test(content)) {
             return parseReg(obj, location, content);
           }
@@ -11747,13 +11747,13 @@ var VirstackAIWebClient = (() => {
     var i = 1;
     var args = arguments;
     var len = args.length;
-    return formatStr.replace(formatRegExp, function(x) {
+    return formatStr.replace(formatRegExp, function(x2) {
       if (i >= len) {
-        return x;
+        return x2;
       }
       var arg = args[i];
       i += 1;
-      switch (x) {
+      switch (x2) {
         case "%%":
           return "%";
         case "%s":
@@ -12177,19 +12177,19 @@ var VirstackAIWebClient = (() => {
         const candidatePairs = /* @__PURE__ */ new Map();
         const candidates = /* @__PURE__ */ new Map();
         const stats = yield this._pc.getStats();
-        stats.forEach((v) => {
-          switch (v.type) {
+        stats.forEach((v2) => {
+          switch (v2.type) {
             case "transport":
-              selectedCandidatePairId = v.selectedCandidatePairId;
+              selectedCandidatePairId = v2.selectedCandidatePairId;
               break;
             case "candidate-pair":
-              if (selectedCandidatePairId === "" && v.selected) {
-                selectedCandidatePairId = v.id;
+              if (selectedCandidatePairId === "" && v2.selected) {
+                selectedCandidatePairId = v2.id;
               }
-              candidatePairs.set(v.id, v);
+              candidatePairs.set(v2.id, v2);
               break;
             case "remote-candidate":
-              candidates.set(v.id, "".concat(v.address, ":").concat(v.port));
+              candidates.set(v2.id, "".concat(v2.address, ":").concat(v2.port));
               break;
           }
         });
@@ -12866,17 +12866,17 @@ var VirstackAIWebClient = (() => {
         }
         const stats = yield this.sender.getStats();
         let audioStats;
-        stats.forEach((v) => {
-          if (v.type === "outbound-rtp") {
+        stats.forEach((v2) => {
+          if (v2.type === "outbound-rtp") {
             audioStats = {
               type: "audio",
-              streamId: v.id,
-              packetsSent: v.packetsSent,
-              packetsLost: v.packetsLost,
-              bytesSent: v.bytesSent,
-              timestamp: v.timestamp,
-              roundTripTime: v.roundTripTime,
-              jitter: v.jitter
+              streamId: v2.id,
+              packetsSent: v2.packetsSent,
+              packetsLost: v2.packetsLost,
+              bytesSent: v2.bytesSent,
+              timestamp: v2.timestamp,
+              roundTripTime: v2.roundTripTime,
+              jitter: v2.jitter
             };
           }
         });
@@ -13120,13 +13120,13 @@ var VirstackAIWebClient = (() => {
   }
   function sortPresets(presets) {
     if (!presets) return;
-    return presets.sort((a, b) => {
+    return presets.sort((a, b2) => {
       const {
         encoding: aEnc
       } = a;
       const {
         encoding: bEnc
-      } = b;
+      } = b2;
       if (aEnc.maxBitrate > bEnc.maxBitrate) {
         return 1;
       }
@@ -13370,30 +13370,30 @@ var VirstackAIWebClient = (() => {
         }
         const items = [];
         const stats = yield this.sender.getStats();
-        stats.forEach((v) => {
+        stats.forEach((v2) => {
           var _a2;
-          if (v.type === "outbound-rtp") {
+          if (v2.type === "outbound-rtp") {
             const vs = {
               type: "video",
-              streamId: v.id,
-              frameHeight: v.frameHeight,
-              frameWidth: v.frameWidth,
-              framesPerSecond: v.framesPerSecond,
-              framesSent: v.framesSent,
-              firCount: v.firCount,
-              pliCount: v.pliCount,
-              nackCount: v.nackCount,
-              packetsSent: v.packetsSent,
-              bytesSent: v.bytesSent,
-              qualityLimitationReason: v.qualityLimitationReason,
-              qualityLimitationDurations: v.qualityLimitationDurations,
-              qualityLimitationResolutionChanges: v.qualityLimitationResolutionChanges,
-              rid: (_a2 = v.rid) !== null && _a2 !== void 0 ? _a2 : v.id,
-              retransmittedPacketsSent: v.retransmittedPacketsSent,
-              targetBitrate: v.targetBitrate,
-              timestamp: v.timestamp
+              streamId: v2.id,
+              frameHeight: v2.frameHeight,
+              frameWidth: v2.frameWidth,
+              framesPerSecond: v2.framesPerSecond,
+              framesSent: v2.framesSent,
+              firCount: v2.firCount,
+              pliCount: v2.pliCount,
+              nackCount: v2.nackCount,
+              packetsSent: v2.packetsSent,
+              bytesSent: v2.bytesSent,
+              qualityLimitationReason: v2.qualityLimitationReason,
+              qualityLimitationDurations: v2.qualityLimitationDurations,
+              qualityLimitationResolutionChanges: v2.qualityLimitationResolutionChanges,
+              rid: (_a2 = v2.rid) !== null && _a2 !== void 0 ? _a2 : v2.id,
+              retransmittedPacketsSent: v2.retransmittedPacketsSent,
+              targetBitrate: v2.targetBitrate,
+              timestamp: v2.timestamp
             };
-            const r2 = stats.get(v.remoteId);
+            const r2 = stats.get(v2.remoteId);
             if (r2) {
               vs.jitter = r2.jitter;
               vs.packetsLost = r2.packetsLost;
@@ -13402,19 +13402,19 @@ var VirstackAIWebClient = (() => {
             items.push(vs);
           }
         });
-        items.sort((a, b) => {
+        items.sort((a, b2) => {
           var _a2, _b;
-          return ((_a2 = b.frameWidth) !== null && _a2 !== void 0 ? _a2 : 0) - ((_b = a.frameWidth) !== null && _b !== void 0 ? _b : 0);
+          return ((_a2 = b2.frameWidth) !== null && _a2 !== void 0 ? _a2 : 0) - ((_b = a.frameWidth) !== null && _b !== void 0 ? _b : 0);
         });
         return items;
       });
     }
     setPublishingQuality(maxQuality) {
       const qualities = [];
-      for (let q = VideoQuality.LOW; q <= VideoQuality.HIGH; q += 1) {
+      for (let q2 = VideoQuality.LOW; q2 <= VideoQuality.HIGH; q2 += 1) {
         qualities.push(new SubscribedQuality({
-          quality: q,
-          enabled: q <= maxQuality
+          quality: q2,
+          enabled: q2 <= maxQuality
         }));
       }
       this.log.debug("setting publishing quality. max quality ".concat(maxQuality), this.logContext);
@@ -13579,8 +13579,8 @@ var VirstackAIWebClient = (() => {
                 simulcastCodecInfo
               }));
               if (!simulcastCodecInfo || !simulcastCodecInfo.sender) {
-                for (const q of codec.qualities) {
-                  if (q.enabled) {
+                for (const q2 of codec.qualities) {
+                  if (q2.enabled) {
                     newCodecs.push(codec.codec);
                     break;
                   }
@@ -13669,7 +13669,7 @@ var VirstackAIWebClient = (() => {
               rid = "q";
             }
             const quality = videoQualityForRid(rid);
-            const subscribedQuality = qualities.find((q) => q.quality === quality);
+            const subscribedQuality = qualities.find((q2) => q2.quality === quality);
             if (!subscribedQuality) {
               return;
             }
@@ -15147,19 +15147,19 @@ var VirstackAIWebClient = (() => {
         }
         const stats = yield this.receiver.getStats();
         let receiverStats;
-        stats.forEach((v) => {
-          if (v.type === "inbound-rtp") {
+        stats.forEach((v2) => {
+          if (v2.type === "inbound-rtp") {
             receiverStats = {
               type: "audio",
-              timestamp: v.timestamp,
-              jitter: v.jitter,
-              bytesReceived: v.bytesReceived,
-              concealedSamples: v.concealedSamples,
-              concealmentEvents: v.concealmentEvents,
-              silentConcealedSamples: v.silentConcealedSamples,
-              silentConcealmentEvents: v.silentConcealmentEvents,
-              totalAudioEnergy: v.totalAudioEnergy,
-              totalSamplesDuration: v.totalSamplesDuration
+              timestamp: v2.timestamp,
+              jitter: v2.jitter,
+              bytesReceived: v2.bytesReceived,
+              concealedSamples: v2.concealedSamples,
+              concealmentEvents: v2.concealmentEvents,
+              silentConcealedSamples: v2.silentConcealedSamples,
+              silentConcealmentEvents: v2.silentConcealmentEvents,
+              totalAudioEnergy: v2.totalAudioEnergy,
+              totalSamplesDuration: v2.totalSamplesDuration
             };
           }
         });
@@ -15285,28 +15285,28 @@ var VirstackAIWebClient = (() => {
         let receiverStats;
         let codecID = "";
         let codecs = /* @__PURE__ */ new Map();
-        stats.forEach((v) => {
-          if (v.type === "inbound-rtp") {
-            codecID = v.codecId;
+        stats.forEach((v2) => {
+          if (v2.type === "inbound-rtp") {
+            codecID = v2.codecId;
             receiverStats = {
               type: "video",
-              framesDecoded: v.framesDecoded,
-              framesDropped: v.framesDropped,
-              framesReceived: v.framesReceived,
-              packetsReceived: v.packetsReceived,
-              packetsLost: v.packetsLost,
-              frameWidth: v.frameWidth,
-              frameHeight: v.frameHeight,
-              pliCount: v.pliCount,
-              firCount: v.firCount,
-              nackCount: v.nackCount,
-              jitter: v.jitter,
-              timestamp: v.timestamp,
-              bytesReceived: v.bytesReceived,
-              decoderImplementation: v.decoderImplementation
+              framesDecoded: v2.framesDecoded,
+              framesDropped: v2.framesDropped,
+              framesReceived: v2.framesReceived,
+              packetsReceived: v2.packetsReceived,
+              packetsLost: v2.packetsLost,
+              frameWidth: v2.frameWidth,
+              frameHeight: v2.frameHeight,
+              pliCount: v2.pliCount,
+              firCount: v2.firCount,
+              nackCount: v2.nackCount,
+              jitter: v2.jitter,
+              timestamp: v2.timestamp,
+              bytesReceived: v2.bytesReceived,
+              decoderImplementation: v2.decoderImplementation
             };
-          } else if (v.type === "codec") {
-            codecs.set(v.id, v);
+          } else if (v2.type === "codec") {
+            codecs.set(v2.id, v2);
           }
         });
         if (receiverStats && codecID !== "" && codecs.get(codecID)) {
@@ -15675,8 +15675,8 @@ var VirstackAIWebClient = (() => {
     ConnectionQuality2["Lost"] = "lost";
     ConnectionQuality2["Unknown"] = "unknown";
   })(ConnectionQuality || (ConnectionQuality = {}));
-  function qualityFromProto(q) {
-    switch (q) {
+  function qualityFromProto(q2) {
+    switch (q2) {
       case ConnectionQuality$1.EXCELLENT:
         return ConnectionQuality.Excellent;
       case ConnectionQuality$1.GOOD:
@@ -15854,9 +15854,9 @@ var VirstackAIWebClient = (() => {
       this.emit(ParticipantEvent.IsSpeakingChanged, speaking);
     }
     /** @internal */
-    setConnectionQuality(q) {
+    setConnectionQuality(q2) {
       const prevQuality = this._connectionQuality;
-      this._connectionQuality = qualityFromProto(q);
+      this._connectionQuality = qualityFromProto(q2);
       if (prevQuality !== this._connectionQuality) {
         this.emit(ParticipantEvent.ConnectionQualityChanged, this._connectionQuality);
       }
@@ -15953,7 +15953,7 @@ var VirstackAIWebClient = (() => {
           allParticipantsAllowed: this.allParticipantsAllowedToSubscribe,
           participantTrackPermissions: this.participantTrackPermissions
         }));
-        this.engine.client.sendUpdateSubscriptionPermissions(this.allParticipantsAllowedToSubscribe, this.participantTrackPermissions.map((p) => trackPermissionToProto(p)));
+        this.engine.client.sendUpdateSubscriptionPermissions(this.allParticipantsAllowedToSubscribe, this.participantTrackPermissions.map((p2) => trackPermissionToProto(p2)));
       };
       this.onTrackUnmuted = (track) => {
         this.onTrackMuted(track, track.isUpstreamPaused);
@@ -16581,7 +16581,7 @@ var VirstackAIWebClient = (() => {
           opts.videoCodec = defaultVideoCodec;
         }
         if (this.enabledPublishVideoCodecs.length > 0) {
-          if (!this.enabledPublishVideoCodecs.some((c) => opts.videoCodec === mimeTypeToVideoCodecString(c.mime))) {
+          if (!this.enabledPublishVideoCodecs.some((c2) => opts.videoCodec === mimeTypeToVideoCodecString(c2.mime))) {
             opts.videoCodec = mimeTypeToVideoCodecString(this.enabledPublishVideoCodecs[0].mime);
           }
         }
@@ -16982,7 +16982,7 @@ var VirstackAIWebClient = (() => {
     }
     /** @internal */
     setEnabledPublishCodecs(codecs) {
-      this.enabledPublishVideoCodecs = codecs.filter((c) => c.mime.split("/")[0].toLowerCase() === "video");
+      this.enabledPublishVideoCodecs = codecs.filter((c2) => c2.mime.split("/")[0].toLowerCase() === "video");
     }
     /** @internal */
     updateInfo(info) {
@@ -17348,9 +17348,9 @@ var VirstackAIWebClient = (() => {
       let publication = this.getTrackPublicationBySid(sid);
       if (!publication) {
         if (!sid.startsWith("TR")) {
-          this.trackPublications.forEach((p) => {
-            if (!publication && mediaTrack.kind === p.kind.toString()) {
-              publication = p;
+          this.trackPublications.forEach((p2) => {
+            if (!publication && mediaTrack.kind === p2.kind.toString()) {
+              publication = p2;
             }
           });
         }
@@ -17802,8 +17802,8 @@ var VirstackAIWebClient = (() => {
           }
           elements.push(dummyAudioEl);
         }
-        this.remoteParticipants.forEach((p) => {
-          p.audioTrackPublications.forEach((t) => {
+        this.remoteParticipants.forEach((p2) => {
+          p2.audioTrackPublications.forEach((t) => {
             if (t.track) {
               t.track.attachedElements.forEach((e) => {
                 elements.push(e);
@@ -17824,8 +17824,8 @@ var VirstackAIWebClient = (() => {
       });
       this.startVideo = () => __awaiter(this, void 0, void 0, function* () {
         const elements = [];
-        for (const p of this.remoteParticipants.values()) {
-          p.videoTrackPublications.forEach((tr) => {
+        for (const p2 of this.remoteParticipants.values()) {
+          p2.videoTrackPublications.forEach((tr) => {
             var _a2;
             (_a2 = tr.track) === null || _a2 === void 0 ? void 0 : _a2.attachedElements.forEach((el) => {
               if (!elements.includes(el)) {
@@ -17847,8 +17847,8 @@ var VirstackAIWebClient = (() => {
       this.handleRestarting = () => {
         this.clearConnectionReconcile();
         this.isResuming = false;
-        for (const p of this.remoteParticipants.values()) {
-          this.handleParticipantDisconnected(p.identity, p);
+        for (const p2 of this.remoteParticipants.values()) {
+          this.handleParticipantDisconnected(p2.identity, p2);
         }
         if (this.setAndEmitConnectionState(ConnectionState.Reconnecting)) {
           this.emit(RoomEvent.Reconnecting);
@@ -17908,11 +17908,11 @@ var VirstackAIWebClient = (() => {
             this.localParticipant.setIsSpeaking(true);
             activeSpeakers.push(this.localParticipant);
           } else {
-            const p = this.getRemoteParticipantBySid(speaker.sid);
-            if (p) {
-              p.audioLevel = speaker.level;
-              p.setIsSpeaking(true);
-              activeSpeakers.push(p);
+            const p2 = this.getRemoteParticipantBySid(speaker.sid);
+            if (p2) {
+              p2.audioLevel = speaker.level;
+              p2.setIsSpeaking(true);
+              activeSpeakers.push(p2);
             }
           }
         });
@@ -17920,10 +17920,10 @@ var VirstackAIWebClient = (() => {
           this.localParticipant.audioLevel = 0;
           this.localParticipant.setIsSpeaking(false);
         }
-        this.remoteParticipants.forEach((p) => {
-          if (!seenSids[p.sid]) {
-            p.audioLevel = 0;
-            p.setIsSpeaking(false);
+        this.remoteParticipants.forEach((p2) => {
+          if (!seenSids[p2.sid]) {
+            p2.audioLevel = 0;
+            p2.setIsSpeaking(false);
           }
         });
         this.activeSpeakers = activeSpeakers;
@@ -17931,31 +17931,31 @@ var VirstackAIWebClient = (() => {
       };
       this.handleSpeakersChanged = (speakerUpdates) => {
         const lastSpeakers = /* @__PURE__ */ new Map();
-        this.activeSpeakers.forEach((p) => {
-          const remoteParticipant = this.remoteParticipants.get(p.identity);
-          if (remoteParticipant && remoteParticipant.sid !== p.sid) {
+        this.activeSpeakers.forEach((p2) => {
+          const remoteParticipant = this.remoteParticipants.get(p2.identity);
+          if (remoteParticipant && remoteParticipant.sid !== p2.sid) {
             return;
           }
-          lastSpeakers.set(p.sid, p);
+          lastSpeakers.set(p2.sid, p2);
         });
         speakerUpdates.forEach((speaker) => {
-          let p = this.getRemoteParticipantBySid(speaker.sid);
+          let p2 = this.getRemoteParticipantBySid(speaker.sid);
           if (speaker.sid === this.localParticipant.sid) {
-            p = this.localParticipant;
+            p2 = this.localParticipant;
           }
-          if (!p) {
+          if (!p2) {
             return;
           }
-          p.audioLevel = speaker.level;
-          p.setIsSpeaking(speaker.active);
+          p2.audioLevel = speaker.level;
+          p2.setIsSpeaking(speaker.active);
           if (speaker.active) {
-            lastSpeakers.set(speaker.sid, p);
+            lastSpeakers.set(speaker.sid, p2);
           } else {
             lastSpeakers.delete(speaker.sid);
           }
         });
         const activeSpeakers = Array.from(lastSpeakers.values());
-        activeSpeakers.sort((a, b) => b.audioLevel - a.audioLevel);
+        activeSpeakers.sort((a, b2) => b2.audioLevel - a.audioLevel);
         this.activeSpeakers = activeSpeakers;
         this.emitWhenConnected(RoomEvent.ActiveSpeakersChanged, activeSpeakers);
       };
@@ -17986,7 +17986,7 @@ var VirstackAIWebClient = (() => {
         pub.setAllowed(update.allowed);
       };
       this.handleSubscriptionError = (update) => {
-        const participant = Array.from(this.remoteParticipants.values()).find((p) => p.trackPublications.has(update.trackSid));
+        const participant = Array.from(this.remoteParticipants.values()).find((p2) => p2.trackPublications.has(update.trackSid));
         if (!participant) {
           return;
         }
@@ -18561,7 +18561,7 @@ var VirstackAIWebClient = (() => {
               if (_this3.options.webAudioMix) {
                 (_c = _this3.audioContext) === null || _c === void 0 ? void 0 : _c.setSinkId(deviceId);
               }
-              yield Promise.all(Array.from(_this3.remoteParticipants.values()).map((p) => p.setAudioOutput({
+              yield Promise.all(Array.from(_this3.remoteParticipants.values()).map((p2) => p2.setAudioOutput({
                 deviceId
               })));
             } catch (e) {
@@ -18619,7 +18619,7 @@ var VirstackAIWebClient = (() => {
         this.log.warn("tried to create RemoteParticipant for local participant", this.logContext);
         return;
       }
-      const participant = Array.from(this.remoteParticipants.values()).find((p) => p.sid === participantSid);
+      const participant = Array.from(this.remoteParticipants.values()).find((p2) => p2.sid === participantSid);
       if (!participant) {
         this.log.error("Tried to add a track for a participant, that's not present. Sid: ".concat(participantSid), this.logContext);
         return;
@@ -18647,9 +18647,9 @@ var VirstackAIWebClient = (() => {
       }
       this.regionUrl = void 0;
       try {
-        this.remoteParticipants.forEach((p) => {
-          p.trackPublications.forEach((pub) => {
-            p.unpublishTrack(pub.trackSid);
+        this.remoteParticipants.forEach((p2) => {
+          p2.trackPublications.forEach((pub) => {
+            p2.unpublishTrack(pub.trackSid);
           });
         });
         this.localParticipant.trackPublications.forEach((pub) => {
@@ -18815,8 +18815,8 @@ var VirstackAIWebClient = (() => {
      * subscription settings.
      */
     updateSubscriptions() {
-      for (const p of this.remoteParticipants.values()) {
-        for (const pub of p.videoTrackPublications.values()) {
+      for (const p2 of this.remoteParticipants.values()) {
+        for (const pub of p2.videoTrackPublications.values()) {
           if (pub.isSubscribed && pub instanceof RemoteTrackPublication) {
             pub.emitTrackUpdate();
           }
@@ -18971,7 +18971,7 @@ var VirstackAIWebClient = (() => {
             tracks: [],
             joinedAt: protoInt64.parse(Date.now())
           });
-          const p = this.getOrCreateParticipant(info.identity, info);
+          const p2 = this.getOrCreateParticipant(info.identity, info);
           if (participantOptions.video) {
             const dummyVideo = createDummyVideoStreamTrack(160 * ((_b = participantOptions.aspectRatios[i % participantOptions.aspectRatios.length]) !== null && _b !== void 0 ? _b : 1), 160, false, true);
             const videoTrack = new TrackInfo({
@@ -18979,7 +18979,7 @@ var VirstackAIWebClient = (() => {
               sid: Math.floor(Math.random() * 1e4).toString(),
               type: TrackType.AUDIO
             });
-            p.addSubscribedMediaTrack(dummyVideo, videoTrack.sid, new MediaStream([dummyVideo]), new RTCRtpReceiver());
+            p2.addSubscribedMediaTrack(dummyVideo, videoTrack.sid, new MediaStream([dummyVideo]), new RTCRtpReceiver());
             info.tracks = [...info.tracks, videoTrack];
           }
           if (participantOptions.audio) {
@@ -18989,10 +18989,10 @@ var VirstackAIWebClient = (() => {
               sid: Math.floor(Math.random() * 1e4).toString(),
               type: TrackType.AUDIO
             });
-            p.addSubscribedMediaTrack(dummyTrack, audioTrack.sid, new MediaStream([dummyTrack]), new RTCRtpReceiver());
+            p2.addSubscribedMediaTrack(dummyTrack, audioTrack.sid, new MediaStream([dummyTrack]), new RTCRtpReceiver());
             info.tracks = [...info.tracks, audioTrack];
           }
-          p.updateInfo(info);
+          p2.updateInfo(info);
         }
       });
     }
@@ -19078,7 +19078,7 @@ var VirstackAIWebClient = (() => {
       });
     }
     isSuccess() {
-      return !this.logs.some((l) => l.level === "error");
+      return !this.logs.some((l2) => l2.level === "error");
     }
     connect() {
       return __awaiter(this, void 0, void 0, function* () {
@@ -19527,144 +19527,1039 @@ var VirstackAIWebClient = (() => {
     }
   };
 
-  // src/index.ts
-  var hostUrl = "wss://retell-ai-4ihahnq7.livekit.cloud";
-  var decoder = new TextDecoder();
-  var VirstackAIWebClient = class extends import_index.default {
-    constructor() {
-      super();
-      this.connected = false;
-      // Helper nodes and variables to analyze and animate based on audio
-      this.isAgentTalking = false;
+  // node_modules/retell-client-js-sdk/dist/index.m.js
+  function c() {
+    try {
+      var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
+      }));
+    } catch (t2) {
     }
-    async startCall(startCallConfig) {
-      try {
-        this.room = new Room({
-          audioCaptureDefaults: {
-            autoGainControl: true,
-            echoCancellation: true,
-            noiseSuppression: true,
-            channelCount: 1,
-            // always mono for input
-            deviceId: startCallConfig.captureDeviceId,
-            sampleRate: startCallConfig.sampleRate
-          },
-          audioOutput: {
-            deviceId: startCallConfig.playbackDeviceId
-          }
-        });
-        this.handleRoomEvents();
-        this.handleAudioEvents(startCallConfig);
-        this.handleDataEvents();
-        await this.room.connect(hostUrl, startCallConfig.accessToken);
-        console.log("connected to room", this.room.name);
-        this.room.localParticipant.setMicrophoneEnabled(true);
-        this.connected = true;
-        this.emit("call_started");
-      } catch (err) {
-        this.emit("error", "Error starting call");
-        console.error("Error starting call", err);
-        this.stopCall();
+    return (c = function() {
+      return !!t;
+    })();
+  }
+  function u(t) {
+    var e = (function(t2, e2) {
+      if ("object" != typeof t2 || !t2) return t2;
+      var n = t2[Symbol.toPrimitive];
+      if (void 0 !== n) {
+        var r2 = n.call(t2, "string");
+        if ("object" != typeof r2) return r2;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
       }
+      return String(t2);
+    })(t);
+    return "symbol" == typeof e ? e : String(e);
+  }
+  function l(t, e) {
+    for (var n = 0; n < e.length; n++) {
+      var r2 = e[n];
+      r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(t, u(r2.key), r2);
     }
-    // Optional.
-    // Some browser does not support audio playback without user interaction
-    // Call this function inside a click/tap handler to start audio playback
-    async startAudioPlayback() {
-      await this.room.startAudio();
-    }
-    stopCall() {
-      if (!this.connected) return;
-      this.connected = false;
-      this.emit("call_ended");
-      this.room?.disconnect();
-      this.isAgentTalking = false;
-      delete this.room;
-      if (this.analyzerComponent) {
-        this.analyzerComponent.cleanup();
-        delete this.analyzerComponent;
+  }
+  function d(t, e, n) {
+    return e && l(t.prototype, e), n && l(t, n), Object.defineProperty(t, "prototype", { writable: false }), t;
+  }
+  function h() {
+    return h = Object.assign ? Object.assign.bind() : function(t) {
+      for (var e = 1; e < arguments.length; e++) {
+        var n = arguments[e];
+        for (var r2 in n) Object.prototype.hasOwnProperty.call(n, r2) && (t[r2] = n[r2]);
       }
-      if (this.captureAudioFrame) {
-        window.cancelAnimationFrame(this.captureAudioFrame);
-        delete this.captureAudioFrame;
-      }
-    }
-    mute() {
-      if (this.connected) this.room.localParticipant.setMicrophoneEnabled(false);
-    }
-    unmute() {
-      if (this.connected) this.room.localParticipant.setMicrophoneEnabled(true);
-    }
-    captureAudioSamples() {
-      if (!this.connected || !this.analyzerComponent) return;
-      let bufferLength = this.analyzerComponent.analyser.fftSize;
-      let dataArray = new Float32Array(bufferLength);
-      this.analyzerComponent.analyser.getFloatTimeDomainData(dataArray);
-      this.emit("audio", dataArray);
-      this.captureAudioFrame = window.requestAnimationFrame(
-        () => this.captureAudioSamples()
-      );
-    }
-    handleRoomEvents() {
-      this.room.on(
-        RoomEvent.ParticipantDisconnected,
-        (participant) => {
-          if (participant?.identity === "server") {
-            setTimeout(() => {
-              this.stopCall();
-            }, 500);
-          }
+      return t;
+    }, h.apply(this, arguments);
+  }
+  function f(t, e) {
+    t.prototype = Object.create(e.prototype), t.prototype.constructor = t, p(t, e);
+  }
+  function v(t) {
+    return v = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(t2) {
+      return t2.__proto__ || Object.getPrototypeOf(t2);
+    }, v(t);
+  }
+  function p(t, e) {
+    return p = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(t2, e2) {
+      return t2.__proto__ = e2, t2;
+    }, p(t, e);
+  }
+  function m(t) {
+    var e = "function" == typeof Map ? /* @__PURE__ */ new Map() : void 0;
+    return m = function(t2) {
+      if (null === t2 || !(function(t3) {
+        try {
+          return -1 !== Function.toString.call(t3).indexOf("[native code]");
+        } catch (e2) {
+          return "function" == typeof t3;
         }
-      );
-      this.room.on(RoomEvent.Disconnected, () => {
-        this.stopCall();
+      })(t2)) return t2;
+      if ("function" != typeof t2) throw new TypeError("Super expression must either be null or a function");
+      if (void 0 !== e) {
+        if (e.has(t2)) return e.get(t2);
+        e.set(t2, n);
+      }
+      function n() {
+        return (function(t3, e2, n2) {
+          if (c()) return Reflect.construct.apply(null, arguments);
+          var r2 = [null];
+          r2.push.apply(r2, e2);
+          var i = new (t3.bind.apply(t3, r2))();
+          return n2 && p(i, n2.prototype), i;
+        })(t2, arguments, v(this).constructor);
+      }
+      return n.prototype = Object.create(t2.prototype, { constructor: { value: n, enumerable: false, writable: true, configurable: true } }), p(n, t2);
+    }, m(t);
+  }
+  function y(t, e) {
+    if (null == t) return {};
+    var n, r2, i = {}, o = Object.keys(t);
+    for (r2 = 0; r2 < o.length; r2++) e.indexOf(n = o[r2]) >= 0 || (i[n] = t[n]);
+    return i;
+  }
+  function g(t, e) {
+    (null == e || e > t.length) && (e = t.length);
+    for (var n = 0, r2 = new Array(e); n < e; n++) r2[n] = t[n];
+    return r2;
+  }
+  function k(t, e) {
+    var n = "undefined" != typeof Symbol && t[Symbol.iterator] || t["@@iterator"];
+    if (n) return (n = n.call(t)).next.bind(n);
+    if (Array.isArray(t) || (n = (function(t2, e2) {
+      if (t2) {
+        if ("string" == typeof t2) return g(t2, e2);
+        var n2 = Object.prototype.toString.call(t2).slice(8, -1);
+        return "Object" === n2 && t2.constructor && (n2 = t2.constructor.name), "Map" === n2 || "Set" === n2 ? Array.from(t2) : "Arguments" === n2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2) ? g(t2, e2) : void 0;
+      }
+    })(t)) || e && t && "number" == typeof t.length) {
+      n && (t = n);
+      var r2 = 0;
+      return function() {
+        return r2 >= t.length ? { done: true } : { done: false, value: t[r2++] };
+      };
+    }
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+  var P = "3.0.2";
+  var w = /* @__PURE__ */ (function(t) {
+    function e(e2, n, r2) {
+      var i;
+      return (i = t.call(this, n) || this).status = void 0, i.body = void 0, i.status = e2, i.body = r2, i.name = "RetellApiError", i;
+    }
+    return f(e, t), e;
+  })(/* @__PURE__ */ m(Error));
+  function b(t) {
+    return "min" === t.level ? "retell-client-js-sdk " + t.current + " is below the minimum supported version " + t.min + "; calls may fail. Upgrade to " + t.recommended + "." : "retell-client-js-sdk " + t.current + " is behind the recommended version " + t.recommended + ". Please upgrade.";
+  }
+  var S = /* @__PURE__ */ (function() {
+    function t(t2) {
+      this.host = void 0, this.version = void 0, this.auth = void 0, this.fetchImpl = void 0, this.versionChecked = false, this.auth = t2.auth, this.host = (t2.baseURL || "https://api.retellai.com").replace(/\/+$/, ""), this.fetchImpl = t2.fetch || fetch;
+    }
+    var e = t.prototype;
+    return e.createWebCall = function(t2, e2) {
+      return this.request("POST", "/v3/create-web-call", t2, e2);
+    }, e.listenLiveCall = function(t2, e2) {
+      return this.request("POST", "/v2/listen-live-call/" + T(t2), {}, e2);
+    }, e.takeOverLiveCall = function(t2, e2, n) {
+      try {
+        return Promise.resolve(this.request("POST", "/v2/take-over-live-call/" + T(t2), { participant_id: e2 }, n)).then(function() {
+        });
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, e.updateLiveCall = function(t2, e2, n) {
+      try {
+        return Promise.resolve(this.request("PATCH", "/v2/update-live-call/" + T(t2), e2, n)).then(function() {
+        });
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, e.stopCall = function(t2, e2) {
+      try {
+        return Promise.resolve(this.request("POST", "/v2/stop-call/" + T(t2), null != e2 && e2.extra ? {} : void 0, e2)).then(function() {
+        });
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, e.monitorSocket = function(t2) {
+      return { url: this.host.replace(/^http/, "ws") + "/v2/monitor-call/" + T(t2), protocols: (e2 = this.auth, n = ["bearer", e2.key], e2.orgId && n.push(e2.orgId), n) };
+      var e2, n;
+    }, e.request = function(t2, e2, n, r2) {
+      try {
+        var i = this, o = (s = { Authorization: "Bearer " + (a = i.auth).key }, a.orgId && (s.orgId = a.orgId), a.orgUserId && (s.orgUserId = a.orgUserId), s);
+        return o["X-Retell-Client-JS-SDK-Version"] = P, null != r2 && r2.recaptchaToken && (o["g-recaptcha-response"] = r2.recaptchaToken), null != r2 && r2.extra && n && "object" == typeof n && (n = h({}, n, r2.extra)), void 0 !== n && (o["Content-Type"] = "application/json"), Promise.resolve((0, i.fetchImpl)(i.host + e2, { method: t2, headers: o, body: void 0 === n ? void 0 : JSON.stringify(n) })).then(function(t3) {
+          return i.checkVersion(t3), Promise.resolve(t3.text()).then(function(e3) {
+            var n2 = void 0;
+            if (e3) try {
+              n2 = JSON.parse(e3);
+            } catch (t4) {
+              n2 = e3;
+            }
+            if (!t3.ok) throw new w(t3.status, (function(t4, e4) {
+              if (t4 && "object" == typeof t4) {
+                var n3, r3, i2 = null != (n3 = null != (r3 = t4.error_message) ? r3 : t4.message) ? n3 : t4.error;
+                if ("string" == typeof i2) return i2;
+              }
+              return "string" == typeof t4 && t4 ? t4 : (e4.status + " " + e4.statusText).trim();
+            })(n2, t3), n2);
+            return n2;
+          });
+        });
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+      var a, s;
+    }, e.checkVersion = function(t2) {
+      if (!this.versionChecked) {
+        var e2, n = C(t2, "X-Retell-Client-JS-SDK-Min-Version"), r2 = C(t2, "X-Retell-Client-JS-SDK-Recommended-Version") || n;
+        (n || r2) && (this.versionChecked = true, n && _(P, n) < 0 ? e2 = "min" : r2 && _(P, r2) < 0 && (e2 = "recommended"), e2 && (this.version = { level: e2, current: P, min: n || r2, recommended: r2 }, console.error("%c" + b(this.version), "font-weight:bold;font-size:1.2em")));
+      }
+    }, t;
+  })();
+  function T(t) {
+    return encodeURIComponent(t);
+  }
+  function C(t, e) {
+    var n, r2 = null == (n = t.headers) || null == n.get ? void 0 : n.get(e);
+    return r2 ? r2.trim() : void 0;
+  }
+  function _(t, e) {
+    for (var n = function(t2) {
+      return t2.trim().replace(/^v/i, "").split(/[-+]/)[0].split(".").map(function(t3) {
+        return parseInt(t3, 10) || 0;
+      });
+    }, r2 = n(t), i = n(e), o = 0; o < Math.max(r2.length, i.length); o++) {
+      var a = (r2[o] || 0) - (i[o] || 0);
+      if (0 !== a) return a;
+    }
+    return 0;
+  }
+  var A = /* @__PURE__ */ (function() {
+    function t(t2, e2, n) {
+      this.url = void 0, this.protocols = void 0, this.handlers = void 0, this.ws = void 0, this.closed = false, this.ended = false, this.attempts = 0, this.notLiveAttempts = 0, this.timer = void 0, this.url = t2, this.protocols = e2, this.handlers = n;
+    }
+    var e = t.prototype;
+    return e.open = function() {
+      var t2 = this;
+      if (!this.closed) {
+        var e2;
+        try {
+          e2 = new WebSocket(this.url, this.protocols);
+        } catch (t3) {
+          return this.fail(t3 instanceof Error ? t3.message : String(t3));
+        }
+        this.ws = e2, e2.onmessage = function(n) {
+          var r2;
+          if (!t2.closed && e2 === t2.ws) {
+            var i;
+            try {
+              i = JSON.parse(String(n.data));
+            } catch (t3) {
+              return;
+            }
+            t2.attempts = 0, t2.notLiveAttempts = 0, "call_ended" === (null == (r2 = i) ? void 0 : r2.type) && (t2.ended = true), t2.handlers.onMessage(i);
+          }
+        }, e2.onclose = function(n) {
+          if (!t2.closed && e2 === t2.ws && (t2.ws = void 0, !t2.ended)) return 1e3 === n.code ? (t2.ended = true, void t2.handlers.onEnd()) : 4004 === n.code ? ++t2.notLiveAttempts >= 8 ? t2.fail("Call not live") : t2.reconnect(t2.notLiveAttempts - 1) : n.code >= 4e3 && n.code <= 4999 ? t2.fail(n.reason || "monitor rejected (code " + n.code + ")") : ++t2.attempts > 8 ? t2.fail("Lost connection to the call monitor") : void t2.reconnect(t2.attempts - 1);
+        }, e2.onerror = function() {
+        };
+      }
+    }, e.close = function() {
+      this.closed = true, clearTimeout(this.timer);
+      var t2 = this.ws;
+      if (this.ws = void 0, t2) {
+        t2.onopen = t2.onmessage = t2.onclose = t2.onerror = null;
+        try {
+          t2.close();
+        } catch (t3) {
+        }
+      }
+    }, e.reconnect = function(t2) {
+      var e2 = this;
+      this.timer = setTimeout(function() {
+        return e2.open();
+      }, (function(t3) {
+        return Math.min(15e3, 500 * Math.pow(2, t3)) + 250 * Math.random();
+      })(t2));
+    }, e.fail = function(t2) {
+      this.close(), this.handlers.onError(new Error(t2));
+    }, t;
+  })();
+  function E(t, e) {
+    try {
+      var n = t();
+    } catch (t2) {
+      return e(t2);
+    }
+    return n && n.then ? n.then(void 0, e) : n;
+  }
+  var O = [{ urls: "stun:stun.l.google.com:19302" }];
+  var I = /* @__PURE__ */ (function() {
+    function t(t2) {
+      this.config = void 0, this.base = void 0, this.pc = void 0, this.dc = void 0, this.localStream = void 0, this.takingOver = void 0, this.audioEl = void 0, this.analyzer = void 0, this.sessionId = void 0, this.pendingCandidates = [], this.handlers = void 0, this.readyFired = false, this.config = t2;
+      var e2 = (t2.baseURL || "https://api.retellai.com").replace(/\/+$/, "");
+      this.base = e2 + "/webrtc-proxy/" + t2.callId;
+    }
+    var e = t.prototype;
+    return e.connect = function(t2) {
+      try {
+        var e2, n = function() {
+          var e3 = i.createDataChannel("control");
+          r2.dc = e3, e3.onmessage = function(e4) {
+            try {
+              t2.onData(JSON.parse(e4.data));
+            } catch (t3) {
+            }
+          }, i.ontrack = function(e4) {
+            var n3 = e4.streams[0] || new MediaStream([e4.track]);
+            r2.attachRemote(n3, e4.track), r2.readyFired || (r2.readyFired = true, t2.onCallReady(r2.analyzer || null));
+          }, i.onicecandidate = function(t3) {
+            t3.candidate && (r2.sessionId ? r2.sendCandidate(t3.candidate) : r2.pendingCandidates.push(t3.candidate));
+          };
+          var n2 = false;
+          return i.onconnectionstatechange = function() {
+            var e4 = i.connectionState;
+            !n2 || "failed" !== e4 && "closed" !== e4 || t2.onDisconnected();
+          }, i.oniceconnectionstatechange = function() {
+            var e4 = i.iceConnectionState;
+            !n2 || "failed" !== e4 && "closed" !== e4 || t2.onDisconnected();
+          }, Promise.resolve(i.createOffer()).then(function(e4) {
+            return Promise.resolve(i.setLocalDescription(e4)).then(function() {
+              return Promise.resolve(r2.createSession(i.localDescription.sdp)).then(function(e5) {
+                return r2.sessionId = e5.session_id, n2 = true, t2.onConnected(), Promise.resolve(i.setRemoteDescription({ type: "answer", sdp: e5.sdp })).then(function() {
+                  var t3 = r2.pendingCandidates;
+                  r2.pendingCandidates = [];
+                  for (var e6, n3 = k(t3); !(e6 = n3()).done; ) r2.sendCandidate(e6.value);
+                });
+              });
+            });
+          });
+        }, r2 = this;
+        if (r2.handlers = t2, !r2.config.callId) throw new Error("callId is required for the gateway transport");
+        var i = new RTCPeerConnection({ iceServers: null != (e2 = r2.config.iceServers) && e2.length ? r2.config.iceServers : O });
+        r2.pc = i;
+        var o = (function() {
+          if (!r2.config.listener) return Promise.resolve(navigator.mediaDevices.getUserMedia({ audio: r2.micConstraints() })).then(function(t3) {
+            r2.localStream = t3, r2.localStream.getTracks().forEach(function(t4) {
+              return i.addTrack(t4, r2.localStream);
+            });
+          });
+          i.addTransceiver("audio", { direction: "recvonly" });
+        })();
+        return Promise.resolve(o && o.then ? o.then(n) : n());
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, e.createSession = function(t2) {
+      try {
+        var e2 = this;
+        return Promise.resolve(fetch(e2.base + "/v1/webrtc/sessions", { method: "POST", headers: e2.headers({ "Content-Type": "application/json" }), body: JSON.stringify({ identity: e2.identity(), sdp: t2 }) })).then(function(t3) {
+          function e3(e4) {
+            return Promise.resolve(t3.json());
+          }
+          var n = (function() {
+            if (!t3.ok) return Promise.resolve(t3.text()).then(function(e4) {
+              throw new Error("gateway WHIP POST failed: " + t3.status + " " + e4);
+            });
+          })();
+          return n && n.then ? n.then(e3) : e3();
+        });
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, e.setMicEnabled = function(t2) {
+      var e2;
+      null == (e2 = this.localStream) || e2.getAudioTracks().forEach(function(e3) {
+        return e3.enabled = t2;
+      });
+    }, e.takeOver = function() {
+      try {
+        var t2 = this;
+        if (!t2.pc) throw new Error("gateway transport not connected");
+        return t2.localStream ? Promise.resolve() : (t2.takingOver || (t2.takingOver = t2.doTakeOver(t2.pc).finally(function() {
+          t2.takingOver = void 0;
+        })), Promise.resolve(t2.takingOver));
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, e.doTakeOver = function(t2, e2) {
+      void 0 === e2 && (e2 = true);
+      try {
+        var n = this;
+        return Promise.resolve(navigator.mediaDevices.getUserMedia({ audio: n.micConstraints() })).then(function(r2) {
+          var i;
+          function o(t3) {
+            if (i) return t3;
+            n.localStream = r2;
+          }
+          var a, s = r2.getAudioTracks()[0], c2 = t2.getTransceivers().find(function(t3) {
+            return "recvonly" === t3.direction;
+          }), u2 = false, l2 = E(function() {
+            function e3() {
+              return Promise.resolve(t2.createOffer()).then(function(e4) {
+                return Promise.resolve(t2.setLocalDescription(e4)).then(function() {
+                  var e5;
+                  function r3(r4) {
+                    return Promise.resolve(t2.setRemoteDescription({ type: "answer", sdp: e5 })).then(function() {
+                      if (n.pc !== t2) throw new Error("gateway transport closed");
+                    });
+                  }
+                  var i3 = E(function() {
+                    return Promise.resolve(fetch(n.base + "/v1/webrtc/sessions/" + n.sessionId, { method: "PATCH", headers: n.headers({ "Content-Type": "application/sdp" }), body: t2.localDescription.sdp })).then(function(t3) {
+                      return u2 = t3.status >= 500 && t3.status < 600, Promise.resolve(t3.text()).then(function(n2) {
+                        if (e5 = n2, !t3.ok) throw new Error("gateway take-over renegotiation failed: " + t3.status + " " + e5);
+                      });
+                    });
+                  }, function(t3) {
+                    throw u2 = u2 || t3 instanceof TypeError, t3;
+                  });
+                  return i3 && i3.then ? i3.then(r3) : r3();
+                });
+              });
+            }
+            var i2 = (function() {
+              if (c2) return Promise.resolve(c2.sender.replaceTrack(s)).then(function() {
+                c2.direction = "sendrecv";
+              });
+              a = t2.addTrack(s, r2);
+            })();
+            return i2 && i2.then ? i2.then(e3) : e3();
+          }, function(o2) {
+            return r2.getTracks().forEach(function(t3) {
+              return t3.stop();
+            }), Promise.resolve(n.undoTakeOver(t2, c2, a)).then(function(r3) {
+              if (e2 && u2 && r3 && n.pc === t2) {
+                var a2 = n.doTakeOver(t2, false);
+                return i = 1, a2;
+              }
+              throw o2;
+            });
+          });
+          return l2 && l2.then ? l2.then(o) : o(l2);
+        });
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, e.undoTakeOver = function(t2, e2, n) {
+      try {
+        return Promise.resolve("closed" !== t2.signalingState && E(function() {
+          function r2() {
+            var r3 = (function() {
+              if (e2) return e2.direction = "recvonly", Promise.resolve(e2.sender.replaceTrack(null)).then(function() {
+              });
+              n && t2.removeTrack(n);
+            })();
+            return !r3 || !r3.then || r3.then(function() {
+              return true;
+            });
+          }
+          var i = (function() {
+            if ("have-local-offer" === t2.signalingState) return Promise.resolve(t2.setLocalDescription({ type: "rollback" })).then(function() {
+            });
+          })();
+          return i && i.then ? i.then(r2) : r2();
+        }, function(t3) {
+          return console.error("gateway take-over rollback failed", t3), false;
+        }));
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, e.micConstraints = function() {
+      return { deviceId: this.config.captureDeviceId, sampleRate: this.config.sampleRate, channelCount: 1, autoGainControl: true, echoCancellation: true, noiseSuppression: true };
+    }, e.resumeAudioPlayback = function() {
+      try {
+        var t2;
+        return Promise.resolve(null == (t2 = this.audioEl) ? void 0 : t2.play()).then(function() {
+        });
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, e.close = function() {
+      var t2, e2;
+      this.sessionId && fetch(this.base + "/v1/webrtc/sessions/" + this.sessionId, { method: "DELETE", headers: this.headers() }).catch(function() {
+      });
+      try {
+        var n;
+        null == (n = this.dc) || n.close();
+      } catch (t3) {
+      }
+      null == (t2 = this.localStream) || t2.getTracks().forEach(function(t3) {
+        return t3.stop();
+      });
+      try {
+        var r2;
+        null == (r2 = this.pc) || r2.close();
+      } catch (t3) {
+      }
+      null == (e2 = this.analyzer) || e2.cleanup().catch(function() {
+      }), this.pc = void 0, this.dc = void 0, this.localStream = void 0, this.audioEl = void 0, this.analyzer = void 0, this.sessionId = void 0;
+    }, e.identity = function() {
+      return this.config.identity || "client";
+    }, e.headers = function(t2) {
+      var e2 = h({ "X-Retell-Client-JS-SDK-Version": P }, t2 || {});
+      return this.config.accessToken && (e2.Authorization = "Bearer " + this.config.accessToken), e2;
+    }, e.sendCandidate = function(t2) {
+      try {
+        var e2 = this;
+        if (!e2.sessionId) return Promise.resolve();
+        var n = E(function() {
+          return Promise.resolve(fetch(e2.base + "/v1/webrtc/sessions/" + e2.sessionId, { method: "PATCH", headers: e2.headers({ "Content-Type": "application/json" }), body: JSON.stringify({ candidate: t2.toJSON() }) })).then(function() {
+          });
+        }, function(t3) {
+          console.error("gateway trickle PATCH failed", t3);
+        });
+        return Promise.resolve(n && n.then ? n.then(function() {
+        }) : void 0);
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, e.attachRemote = function(t2, e2) {
+      var n = new Audio();
+      n.autoplay = true, n.srcObject = t2, this.config.playbackDeviceId && n.setSinkId && n.setSinkId(this.config.playbackDeviceId).catch(function() {
+      }), n.play().catch(function() {
+      }), this.audioEl = n, this.config.emitRawAudioSamples && (this.analyzer = (function(t3) {
+        var e3 = new (window.AudioContext || window.webkitAudioContext)();
+        e3.resume().catch(function() {
+        });
+        var n2 = e3.createMediaStreamSource(new MediaStream([t3])), r2 = e3.createAnalyser();
+        return n2.connect(r2), { calculateVolume: function() {
+          var t4 = new Float32Array(r2.fftSize);
+          r2.getFloatTimeDomainData(t4);
+          for (var e4 = 0, n3 = 0; n3 < t4.length; n3++) e4 += t4[n3] * t4[n3];
+          return Math.sqrt(e4 / t4.length);
+        }, analyser: r2, cleanup: function() {
+          try {
+            try {
+              n2.disconnect();
+            } catch (t5) {
+            }
+            var t4 = E(function() {
+              return Promise.resolve(e3.close()).then(function() {
+              });
+            }, function() {
+            });
+            return Promise.resolve(t4 && t4.then ? t4.then(function() {
+            }) : void 0);
+          } catch (t5) {
+            return Promise.reject(t5);
+          }
+        } };
+      })(e2));
+    }, t;
+  })();
+  var j = new TextDecoder();
+  var D = /* @__PURE__ */ (function() {
+    function t(t2) {
+      this.room = void 0, this.config = void 0, this.micTrack = void 0, this.readyFired = false, this.config = t2;
+    }
+    var c2 = t.prototype;
+    return c2.connect = function(t2) {
+      try {
+        var a = this;
+        if (!a.config.accessToken) throw new Error("accessToken is required for the livekit transport");
+        var s = new Room({ audioCaptureDefaults: { autoGainControl: true, echoCancellation: true, noiseSuppression: true, channelCount: 1, deviceId: a.config.captureDeviceId, sampleRate: a.config.sampleRate }, audioOutput: { deviceId: a.config.playbackDeviceId } });
+        a.room = s;
+        var c3 = false;
+        return s.on(RoomEvent.Disconnected, function() {
+          c3 && t2.onDisconnected();
+        }), a.config.listener && s.on(RoomEvent.ParticipantDisconnected, function() {
+          c3 && 0 === s.remoteParticipants.size && t2.onDisconnected();
+        }), s.on(RoomEvent.TrackSubscribed, function(e, n) {
+          if (e.kind === Track.Kind.Audio && e instanceof RemoteAudioTrack) {
+            if (a.config.listener ? !a.readyFired : "agent_audio" === n.trackName) {
+              a.readyFired = true;
+              var s2 = null;
+              a.config.emitRawAudioSamples && (s2 = createAudioAnalyser(e)), t2.onCallReady(s2);
+            }
+            e.attach();
+          }
+        }), s.on(RoomEvent.DataReceived, function(e, n) {
+          if ("server" === (null == n ? void 0 : n.identity)) try {
+            t2.onData(JSON.parse(j.decode(e)));
+          } catch (t3) {
+            console.error("Error decoding data received", t3);
+          }
+        }), Promise.resolve(s.connect(a.config.url || "wss://retell-ai-4ihahnq7.livekit.cloud", a.config.accessToken)).then(function() {
+          c3 = true, a.config.listener || s.localParticipant.setMicrophoneEnabled(true), t2.onConnected();
+        });
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, c2.takeOver = function() {
+      try {
+        var t2 = this, e = t2.room;
+        if (!e) throw new Error("livekit transport not connected");
+        return t2.micTrack ? Promise.resolve() : Promise.resolve(createLocalAudioTrack({ deviceId: t2.config.captureDeviceId, sampleRate: t2.config.sampleRate, channelCount: 1, autoGainControl: true, echoCancellation: true, noiseSuppression: true })).then(function(n) {
+          return (function(r2, i) {
+            try {
+              var o = Promise.resolve(t2.waitForPublishGrant(e)).then(function() {
+                return Promise.resolve(e.localParticipant.publishTrack(n)).then(function() {
+                  t2.micTrack = n;
+                });
+              });
+            } catch (t3) {
+              return i(t3);
+            }
+            return o && o.then ? o.then(void 0, i) : o;
+          })(0, function(t3) {
+            throw n.stop(), t3;
+          });
+        });
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, c2.waitForPublishGrant = function(t2) {
+      return new Promise(function(e, n) {
+        var r2, i = function() {
+          clearTimeout(o), t2.localParticipant.off(ParticipantEvent.ParticipantPermissionsChanged, a);
+        }, o = setTimeout(function() {
+          i(), n(new Error("Timed out waiting for publish permission"));
+        }, 5e3), a = function() {
+          var n2;
+          null != (n2 = t2.localParticipant.permissions) && n2.canPublish && (i(), e());
+        };
+        t2.localParticipant.on(ParticipantEvent.ParticipantPermissionsChanged, a), null != (r2 = t2.localParticipant.permissions) && r2.canPublish && (i(), e());
+      });
+    }, c2.setMicEnabled = function(t2) {
+      var e;
+      this.micTrack ? t2 ? this.micTrack.unmute() : this.micTrack.mute() : null == (e = this.room) || e.localParticipant.setMicrophoneEnabled(t2);
+    }, c2.resumeAudioPlayback = function() {
+      try {
+        var t2;
+        return Promise.resolve(null == (t2 = this.room) ? void 0 : t2.startAudio()).then(function() {
+        });
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, c2.close = function() {
+      var t2, e;
+      null == (t2 = this.micTrack) || t2.stop(), this.micTrack = void 0, null == (e = this.room) || e.disconnect(), this.room = void 0, this.readyFired = false;
+    }, t;
+  })();
+  function R2(t, e) {
+    var n;
+    return null != (n = t.transport) ? n : e;
+  }
+  var M = { onStatus: "status", onTranscript: "transcript", onAgentStartTalking: "agent_start_talking", onAgentStopTalking: "agent_stop_talking", onUpdate: "update", onMetadata: "metadata", onNodeTransition: "node_transition", onAudio: "audio", onEnd: "end", onError: "error" };
+  var F = { update: "update", metadata: "metadata", agent_start_talking: "agent_start_talking", agent_stop_talking: "agent_stop_talking", node_transition: "node_transition" };
+  var L = { transcript_snapshot: "transcript", transcript_updated: "transcript", call_ended: "end" };
+  var z = ["seq"];
+  var q = /* @__PURE__ */ (function() {
+    function t() {
+      this.items = /* @__PURE__ */ new Map(), this.preSession = /* @__PURE__ */ new Map(), this.seq = 0;
+    }
+    var e = t.prototype;
+    return e.merge = function(t2, e2) {
+      var n = this.mergeInto(this.items, t2);
+      return this.mergeInto(this.preSession, e2), n;
+    }, e.mergeInto = function(t2, e2) {
+      var n = [];
+      if (!e2) return n;
+      for (var r2, i = k(e2); !(r2 = i()).done; ) {
+        var o, a = r2.value, s = t2.get(a.id);
+        s || n.push(a), t2.set(a.id, h({}, a, { seq: null != (o = null == s ? void 0 : s.seq) ? o : this.seq++ }));
+      }
+      return n;
+    }, d(t, [{ key: "transcript", get: function() {
+      return x(this.items);
+    } }, { key: "preSessionTranscript", get: function() {
+      return x(this.preSession);
+    } }]), t;
+  })();
+  function x(t) {
+    return Array.from(t.values()).sort(function(t2, e) {
+      return t2.time_sec - e.time_sec || t2.seq - e.seq;
+    }).map(function(t2) {
+      return y(t2, z);
+    });
+  }
+  var U = ["type"];
+  var J = /* @__PURE__ */ (function(t) {
+    function e(e2, n2) {
+      var r2;
+      if ((r2 = t.call(this) || this).api = void 0, r2.status = "connecting", r2.callId = void 0, r2.isAgentTalking = false, r2.analyzerComponent = void 0, r2.ready = void 0, r2.transport = void 0, r2.ended = false, r2.nodeTransitionSource = "data", r2.socket = void 0, r2.store = new q(), r2.captureAudioFrame = void 0, r2.unknownWarned = /* @__PURE__ */ new Set(), r2.versionReported = false, r2.settleReady = void 0, r2.api = e2, r2.ready = new Promise(function(t2, e3) {
+        r2.settleReady = { resolve: t2, reject: e3 };
+      }), r2.ready.catch(function() {
+      }), n2) for (var i = 0, o = Object.keys(M); i < o.length; i++) {
+        var a = o[i], s = n2[a];
+        s && r2.on(M[a], s);
+      }
+      return r2;
+    }
+    f(e, t);
+    var n = e.prototype;
+    return n.disconnect = function() {
+      this.finish({});
+    }, n.update = function(t2, e2) {
+      try {
+        var n2 = this;
+        if (!n2.callId) throw new Error("Call not created yet");
+        return Promise.resolve(n2.api.updateLiveCall(n2.callId, t2, e2)).then(function() {
+        });
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, n.startAudioPlayback = function() {
+      try {
+        var t2;
+        return Promise.resolve(null == (t2 = this.transport) ? void 0 : t2.resumeAudioPlayback()).then(function() {
+        });
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, n.setStatus = function(t2) {
+      this.ended || (this.status = t2, this.emit("status", t2), "connecting" !== t2 && this.settleReady.resolve());
+    }, n.fail = function(t2) {
+      if (!this.ended) {
+        var e2 = (function(t3) {
+          return t3 instanceof Error ? t3 : new Error("string" == typeof t3 ? t3 : "Unknown error");
+        })(t2);
+        this.emit("error", e2), this.settleReady.reject(e2), this.finish({});
+      }
+    }, n.finish = function(t2) {
+      this.ended || (this.ended = true, this.closeMonitor(), this.dropTransport(), this.status = "ended", this.emit("status", "ended"), this.settleReady.reject(new Error("Session ended before it was ready")), this.emit("end", t2));
+    }, n.connectTransport = function(t2) {
+      try {
+        var e2 = function(t3) {
+          if (n2.ended) throw new Error("Session has ended");
+        }, n2 = this, r2 = "gateway" === R2(t2, "livekit") ? new I(t2) : new D(t2);
+        n2.transport = r2;
+        var i = function() {
+          return n2.transport === r2;
+        }, o = (function(t3, e3) {
+          try {
+            var o2 = Promise.resolve(r2.connect({ onConnected: function() {
+            }, onCallReady: function(t4) {
+              t4 && !n2.ended && i() && (n2.analyzerComponent = t4, n2.captureAudioFrame = requestAnimationFrame(function() {
+                return n2.captureAudioSamples();
+              }));
+            }, onData: function(t4) {
+              i() && n2.handleDataEvent(t4);
+            }, onDisconnected: function() {
+              i() && n2.finish({});
+            }, onError: function(t4) {
+              i() && n2.emit("error", new Error(t4));
+            } })).then(function() {
+            });
+          } catch (t4) {
+            return e3(t4);
+          }
+          return o2 && o2.then ? o2.then(void 0, e3) : o2;
+        })(0, function(t3) {
+          throw n2.transport === r2 ? n2.dropTransport() : r2.close(), t3;
+        });
+        return Promise.resolve(o && o.then ? o.then(e2) : e2());
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, n.reportVersion = function() {
+      var t2 = this.api.version;
+      !this.versionReported && t2 && "min" === t2.level && (this.versionReported = true, this.emit("error", new Error(b(t2))));
+    }, n.dropTransport = function() {
+      var t2;
+      null == (t2 = this.transport) || t2.close(), this.transport = void 0, this.isAgentTalking = false, this.analyzerComponent && (this.analyzerComponent.cleanup().catch(function() {
+      }), this.analyzerComponent = void 0), void 0 !== this.captureAudioFrame && (cancelAnimationFrame(this.captureAudioFrame), this.captureAudioFrame = void 0);
+    }, n.startMonitor = function(t2, e2) {
+      var n2 = this, r2 = this.api.monitorSocket(t2);
+      this.socket = new A(r2.url, r2.protocols, { onMessage: function(t3) {
+        return n2.handleMonitorEvent(t3);
+      }, onEnd: function() {
+        e2 ? n2.monitorEnded({}) : n2.monitorLost("stream closed");
+      }, onError: function(t3) {
+        e2 ? n2.fail(t3) : n2.monitorLost(t3.message);
+      } }), this.socket.open();
+    }, n.monitorLost = function(t2) {
+      this.closeMonitor(), this.nodeTransitionSource = "data", console.warn("retell: live transcript unavailable:", t2);
+    }, n.closeMonitor = function() {
+      var t2;
+      null == (t2 = this.socket) || t2.close(), this.socket = void 0;
+    }, n.onMonitorAttached = function() {
+    }, n.monitorEnded = function(t2) {
+      this.finish(t2);
+    }, n.handleDataEvent = function(t2) {
+      if ("status" !== (null == t2 ? void 0 : t2.type)) {
+        var e2 = F[null == t2 ? void 0 : t2.event_type];
+        if (!e2) return this.dropUnknown("data", null == t2 ? void 0 : t2.event_type);
+        "node_transition" === e2 && "data" !== this.nodeTransitionSource || ("agent_start_talking" === e2 ? (this.isAgentTalking = true, this.emit(e2)) : "agent_stop_talking" === e2 ? (this.isAgentTalking = false, this.emit(e2)) : this.emit(e2, t2));
+      } else "ended" !== t2.state && "replaced" !== t2.state || this.finish({});
+    }, n.handleMonitorEvent = function(t2) {
+      var e2 = L[null == t2 ? void 0 : t2.type];
+      if (!e2) return this.dropUnknown("monitor", null == t2 ? void 0 : t2.type);
+      if (this.onMonitorAttached(), "transcript" === e2) {
+        var n2 = this.store.merge(t2.transcripts, t2.pre_session_transcripts);
+        if (this.emit("transcript", this.transcript, this.preSessionTranscript), "monitor" !== this.nodeTransitionSource) return;
+        for (var r2, i = k(n2); !(r2 = i()).done; ) {
+          var o = r2.value;
+          "node_transition" === o.role && this.emit("node_transition", o);
+        }
+      } else {
+        var a = y(t2, U);
+        this.monitorEnded(a);
+      }
+    }, n.dropUnknown = function(t2, e2) {
+      var n2 = t2 + ":" + String(e2);
+      this.unknownWarned.has(n2) || (this.unknownWarned.add(n2), console.debug("retell-client-js-sdk: ignoring unknown " + t2 + ' event "' + String(e2) + '" \u2014 not supported by this SDK version'));
+    }, n.captureAudioSamples = function() {
+      var t2 = this;
+      if (!this.ended && this.analyzerComponent) {
+        var e2 = new Float32Array(this.analyzerComponent.analyser.fftSize);
+        this.analyzerComponent.analyser.getFloatTimeDomainData(e2), this.emit("audio", e2), this.captureAudioFrame = requestAnimationFrame(function() {
+          return t2.captureAudioSamples();
+        });
+      }
+    }, d(e, [{ key: "transcript", get: function() {
+      return this.store.transcript;
+    } }, { key: "preSessionTranscript", get: function() {
+      return this.store.preSessionTranscript;
+    } }]), e;
+  })(import_index.default);
+  function N(t, e) {
+    try {
+      var n = t();
+    } catch (t2) {
+      return e(true, t2);
+    }
+    return n && n.then ? n.then(e.bind(null, false), e.bind(null, true)) : e(false, n);
+  }
+  function V(t, e) {
+    try {
+      var n = t();
+    } catch (t2) {
+      return e(t2);
+    }
+    return n && n.then ? n.then(void 0, e) : n;
+  }
+  var W = /* @__PURE__ */ (function(t) {
+    function e(e2, n2) {
+      var r2;
+      return (r2 = t.call(this, e2, n2.hooks) || this).audio = void 0, r2.participantId = void 0, r2.listening = void 0, r2.takingOver = void 0, r2.takeOverRequested = false, r2.pendingEnd = void 0, r2.callId = n2.call_id, r2.audio = n2.audio, false !== n2.transcript && (r2.nodeTransitionSource = "monitor"), queueMicrotask(function() {
+        r2.ended || (false === n2.transcript ? r2.setStatus("monitoring") : r2.startMonitor(r2.callId, true));
+      }), r2;
+    }
+    f(e, t);
+    var n = e.prototype;
+    return n.listen = function(t2) {
+      var e2 = this;
+      return "listening" === this.status || "taken_over" === this.status ? Promise.resolve() : this.ended ? Promise.reject(new Error("Session has ended")) : (this.listening || (this.listening = this.doListen(t2).finally(function() {
+        e2.listening = void 0;
+      })), this.listening);
+    }, n.stopListening = function() {
+      "listening" !== this.status || this.takingOver || (this.dropTransport(), this.participantId = void 0, this.setStatus("monitoring"));
+    }, n.takeOver = function(t2) {
+      var e2 = this;
+      return "taken_over" === this.status ? Promise.resolve() : this.ended ? Promise.reject(new Error("Session has ended")) : (this.takingOver || (this.takingOver = this.doTakeOver(t2).finally(function() {
+        e2.takingOver = void 0;
+      })), this.takingOver);
+    }, n.mute = function() {
+      var t2;
+      "taken_over" === this.status && (null == (t2 = this.transport) || t2.setMicEnabled(false));
+    }, n.unmute = function() {
+      var t2;
+      "taken_over" === this.status && (null == (t2 = this.transport) || t2.setMicEnabled(true));
+    }, n.end = function(t2) {
+      try {
+        var e2 = function() {
+          n2.disconnect();
+        }, n2 = this;
+        if (n2.ended) return Promise.resolve();
+        var r2 = (function() {
+          if ("taken_over" !== n2.status) return Promise.resolve(n2.api.stopCall(n2.callId, t2)).then(function() {
+          });
+        })();
+        return Promise.resolve(r2 && r2.then ? r2.then(e2) : e2());
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, n.onMonitorAttached = function() {
+      "connecting" === this.status && this.setStatus("monitoring");
+    }, n.monitorEnded = function(t2) {
+      var e2 = t2.disconnection_reason;
+      return e2 && "call_take_over" !== e2 ? this.finish(t2) : this.takeOverRequested || "taken_over" === this.status ? (this.pendingEnd = t2, void this.closeMonitor()) : void this.finish(t2);
+    }, n.doListen = function(t2) {
+      try {
+        var e2, n2 = function() {
+          var t3;
+          if (r2.ended) throw new Error("Session has ended");
+          return Promise.resolve(r2.connectTransport(h({ accessToken: e2.access_token, transport: null != (t3 = e2.transport) ? t3 : "livekit", listener: true, callId: r2.callId, identity: e2.participant_id, url: e2.url, iceServers: e2.ice_servers, baseURL: r2.api.host }, r2.audio))).then(function() {
+            function t4(t5) {
+              r2.participantId = e2.participant_id, r2.setStatus("listening");
+            }
+            var n3 = V(function() {
+              var t5;
+              return Promise.resolve(null == (t5 = r2.transport) ? void 0 : t5.resumeAudioPlayback()).then(function() {
+              });
+            }, function(t5) {
+              throw r2.dropTransport(), new Error("Audio playback blocked; call listen() from a user gesture (" + (t5 instanceof Error ? t5.message : String(t5)) + ")");
+            });
+            return n3 && n3.then ? n3.then(t4) : t4();
+          });
+        }, r2 = this, i = N(function() {
+          return Promise.resolve(r2.api.listenLiveCall(r2.callId, t2)).then(function(t3) {
+            e2 = t3;
+          });
+        }, function(t3, e3) {
+          if (r2.reportVersion(), t3) throw e3;
+          return e3;
+        });
+        return Promise.resolve(i && i.then ? i.then(n2) : n2());
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, n.doTakeOver = function(t2) {
+      try {
+        var e2 = function() {
+          function e3(e4) {
+            function r3(t3) {
+              n2.setStatus("taken_over");
+            }
+            var a2 = false, s = N(function() {
+              return V(function() {
+                return n2.takeOverRequested = true, Promise.resolve(n2.api.takeOverLiveCall(n2.callId, o, t2)).then(function() {
+                  a2 = true;
+                  var t3 = n2.transport;
+                  if (n2.ended || null == t3 || !t3.takeOver) throw new Error("Call ended before take-over");
+                  return Promise.resolve(t3.takeOver()).then(function() {
+                  });
+                });
+              }, function(t3) {
+                throw a2 ? n2.fail(t3) : (n2.takeOverRequested = false, n2.pendingEnd && n2.finish(n2.pendingEnd)), t3;
+              });
+            }, function(t3, e5) {
+              if (i2.getTracks().forEach(function(t4) {
+                return t4.stop();
+              }), t3) throw e5;
+              return e5;
+            });
+            return s && s.then ? s.then(r3) : r3();
+          }
+          var i2, o = n2.participantId;
+          if (!o) throw new Error("Not listening");
+          var a = V(function() {
+            var t3, e4;
+            return Promise.resolve(navigator.mediaDevices.getUserMedia({ audio: { deviceId: null == (t3 = n2.audio) ? void 0 : t3.captureDeviceId, sampleRate: null == (e4 = n2.audio) ? void 0 : e4.sampleRate, channelCount: 1, autoGainControl: true, echoCancellation: true, noiseSuppression: true } })).then(function(t4) {
+              i2 = t4;
+            });
+          }, function(t3) {
+            throw r2 && !n2.ended && (n2.dropTransport(), n2.participantId = void 0, n2.setStatus("monitoring")), t3;
+          });
+          return a && a.then ? a.then(e3) : e3();
+        }, n2 = this, r2 = "listening" !== n2.status, i = (function() {
+          if (r2) return Promise.resolve(n2.listen()).then(function() {
+          });
+        })();
+        return Promise.resolve(i && i.then ? i.then(e2) : e2());
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, e;
+  })(J);
+  var G = ["hooks", "transcript", "audio", "recaptchaToken", "extra"];
+  var K = /* @__PURE__ */ (function(t) {
+    function e(e2, n2) {
+      var r2;
+      return r2 = t.call(this, e2, n2.hooks) || this, n2.transcript && (r2.nodeTransitionSource = "monitor"), queueMicrotask(function() {
+        r2.start(n2);
+      }), r2;
+    }
+    f(e, t);
+    var n = e.prototype;
+    return n.mute = function() {
+      var t2;
+      null == (t2 = this.transport) || t2.setMicEnabled(false);
+    }, n.unmute = function() {
+      var t2;
+      null == (t2 = this.transport) || t2.setMicEnabled(true);
+    }, n.end = function() {
+      try {
+        return this.disconnect(), Promise.resolve();
+      } catch (t2) {
+        return Promise.reject(t2);
+      }
+    }, n.start = function(t2) {
+      try {
+        var e2 = this, n2 = t2.transcript, r2 = t2.audio, i = t2.recaptchaToken, o = t2.extra, a = y(t2, G);
+        return e2.ended ? Promise.resolve() : Promise.resolve((function(t3, s) {
+          try {
+            var c2 = (function() {
+              function t4() {
+                if (e2.callId = s2.call_id, !e2.ended) return Promise.resolve(e2.connectTransport(h({ accessToken: s2.access_token, transport: s2.transport, callId: s2.call_id, url: s2.url, iceServers: s2.ice_servers, baseURL: e2.api.host }, r2))).then(function() {
+                  e2.setStatus("live"), n2 && e2.startMonitor(s2.call_id, false);
+                });
+                e2.api.stopCall(s2.call_id).catch(function() {
+                });
+              }
+              var s2, c3 = (function(t5, n3) {
+                try {
+                  var r3 = Promise.resolve(e2.api.createWebCall(a, { recaptchaToken: i, extra: o })).then(function(t6) {
+                    s2 = t6;
+                  });
+                } catch (t6) {
+                  return n3(true, t6);
+                }
+                return r3 && r3.then ? r3.then(n3.bind(null, false), n3.bind(null, true)) : n3(false, r3);
+              })(0, function(t5, n3) {
+                if (e2.reportVersion(), t5) throw n3;
+                return n3;
+              });
+              return c3 && c3.then ? c3.then(t4) : t4();
+            })();
+          } catch (t4) {
+            return s(t4);
+          }
+          return c2 && c2.then ? c2.then(void 0, s) : c2;
+        })(0, function(t3) {
+          e2.fail(t3);
+        }));
+      } catch (t3) {
+        return Promise.reject(t3);
+      }
+    }, e;
+  })(J);
+  var H = /* @__PURE__ */ (function() {
+    function t(t2) {
+      this.api = void 0, this.api = new S({ auth: t2, baseURL: t2.baseURL, fetch: t2.fetch });
+    }
+    var e = t.prototype;
+    return e.createWebCall = function(t2) {
+      return new K(this.api, t2);
+    }, e.monitorCall = function(t2) {
+      return new W(this.api, t2);
+    }, e.stopCall = function(t2, e2) {
+      return this.api.stopCall(t2, e2);
+    }, e.updateLiveCall = function(t2, e2, n) {
+      return this.api.updateLiveCall(t2, e2, n);
+    }, t;
+  })();
+
+  // src/index.ts
+  var VirstackAIWebClient = class extends import_index.default {
+    async startCall(config) {
+      const client = new H({
+        key: "unused",
+        // real key lives on the server behind tokenUrl
+        fetch: (url, init) => String(url).endsWith("/v3/create-web-call") ? fetch(config.tokenUrl, { method: "POST", headers: { "Content-Type": "application/json" } }) : fetch(url, init)
+      });
+      this.session = client.createWebCall({
+        agent_id: "",
+        // ignored: the request is replaced by tokenUrl above
+        audio: { captureDeviceId: config.captureDeviceId, playbackDeviceId: config.playbackDeviceId },
+        hooks: {
+          onStatus: (s) => s === "live" && this.emit("call_started"),
+          onEnd: () => this.emit("call_ended"),
+          onError: (e) => this.emit("error", e.message),
+          onAgentStartTalking: () => this.emit("agent_start_talking"),
+          onAgentStopTalking: () => this.emit("agent_stop_talking")
+        }
+      });
+      await this.session.ready.catch(() => {
       });
     }
-    handleAudioEvents(startCallConfig) {
-      this.room.on(
-        RoomEvent.TrackSubscribed,
-        (track, publication, participant) => {
-          if (track.kind === Track.Kind.Audio && track instanceof RemoteAudioTrack) {
-            if (publication.trackName === "agent_audio") {
-              this.emit("call_ready");
-              if (startCallConfig.emitRawAudioSamples) {
-                this.analyzerComponent = createAudioAnalyser(track);
-                this.captureAudioFrame = window.requestAnimationFrame(
-                  () => this.captureAudioSamples()
-                );
-              }
-            }
-            track.attach();
-          }
-        }
-      );
+    stopCall() {
+      this.session?.end();
     }
-    handleDataEvents() {
-      this.room.on(
-        RoomEvent.DataReceived,
-        (payload, participant, kind, topic) => {
-          try {
-            if (participant?.identity !== "server") return;
-            let decodedData = decoder.decode(payload);
-            let event = JSON.parse(decodedData);
-            if (event.event_type === "update") {
-              this.emit("update", event);
-            } else if (event.event_type === "metadata") {
-              this.emit("metadata", event);
-            } else if (event.event_type === "agent_start_talking") {
-              this.isAgentTalking = true;
-              this.emit("agent_start_talking");
-            } else if (event.event_type === "agent_stop_talking") {
-              this.isAgentTalking = false;
-              this.emit("agent_stop_talking");
-            } else if (event.event_type === "node_transition") {
-              this.emit("node_transition", event);
-            }
-          } catch (err) {
-            console.error("Error decoding data received", err);
-          }
-        }
-      );
+    mute() {
+      this.session?.mute();
+    }
+    unmute() {
+      this.session?.unmute();
     }
   };
   var index_default = VirstackAIWebClient;

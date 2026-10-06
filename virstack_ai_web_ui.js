@@ -510,8 +510,6 @@
                 this.elements.button.classList.add('connecting');
                 this.showStatus('Authenticating...', 10000);
 
-                const accessToken = await this.fetchAccessToken();
-
                 this.showStatus('Connecting...', 10000);
 
                 if (!window.VirstackAIWebClient) {
@@ -585,7 +583,7 @@
                 });
 
                 await this.virstackWebClient.startCall({
-                    accessToken: accessToken
+                    tokenUrl: this.config.tokenUrl
                 });
 
             } catch (error) {

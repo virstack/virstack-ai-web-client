@@ -468,7 +468,6 @@ var VirstackAIWebUIWidget = (() => {
         try {
           this.elements.button.classList.add("connecting");
           this.showStatus("Authenticating...", 1e4);
-          const accessToken = await this.fetchAccessToken();
           this.showStatus("Connecting...", 1e4);
           if (!window.VirstackAIWebClient) {
             throw new Error("VirstackAIWebClient library not loaded");
@@ -527,7 +526,7 @@ var VirstackAIWebUIWidget = (() => {
             this.hideAgentSpeaking();
           });
           await this.virstackWebClient.startCall({
-            accessToken
+            tokenUrl: this.config.tokenUrl
           });
         } catch (error) {
           console.error("Virstack: Error starting call:", error);
